@@ -33,7 +33,7 @@ export default function Navbar() {
         {/* <Image src={logo} className="Logo" alt="Logo"/> */}
         {/* <Link href="/"></Link> */}
           
-  
+        
       </nav>
     )
   }
