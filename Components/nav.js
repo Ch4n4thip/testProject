@@ -6,7 +6,9 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 export default function Navbar() {
     return (
+        
       <nav className={styles1.NavbarItem}>
+        <section className="flex justify-end p-5">
         <Link href="Home">
             <Image 
                 alt="Home"
@@ -17,10 +19,12 @@ export default function Navbar() {
                 height={145}
             />
         </Link>
+        </section>
+        <section className="flex justify-end p-5">
         <div className={styles1.btn}>
             <Link href="Login" ><p>Login</p></Link>
         </div>
-       
+        </section>
         {/* <Link href="Log" className="btn">
             Login
         </Link> */}
