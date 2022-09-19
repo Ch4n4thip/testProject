@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from 'next/image'
-import logo from "../img/Png 250.png"
-import styles1 from '../styles/Navbar.module.css'
-import Home from "../pages/Home";
-import Login from "../pages/Login";
+import logo from "../../img/Png 250.png"
+import styles1 from './Navbar.module.css'
 export default function Navbar() {
     return (
         
