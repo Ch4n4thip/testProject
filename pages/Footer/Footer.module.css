@@ -3,6 +3,10 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 15rem;
-    margin: 0 auto 3rem;
+    padding: 2rem;
+}
+
+.Foot {
+    background-color: #f0efef;
 }
 

@@ -15,13 +15,16 @@ export default function Login() {
         <div className={styles1.login__container__form}>
           <h1>เข้าสู่ระบบ</h1>
           <form action="" className={styles1.form}>
-            <input type="text" name='Email' placeholder='โปรดใส่อีเมล' required/>
-            <input type="password" name='Password' placeholder='โปรดใส่รหัสผ่าน' required/>
+            <input type="text" name='Email' placeholder=' โปรดใส่อีเมล' required/>
+            <input type="password" name='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
             <button type='submit' className='btn btn-primary'>เข้าสู่ระบบ</button> 
-          </form>
-            <Link href="/Register/Register"><p>สมัครบัญชีใหม่</p></Link>
+          </form> 
+            <div className={styles1.login__option}>
+              <Link href="#"><p className={styles1.login__forgot} >ลืมรหัสผ่าน</p></Link>
+              <Link href="#"><p className={styles1.login__new}>สมัครบัญชีใหม่</p></Link>
+            </div>
           </div>
-        </div> 
+        </div>        
     </body>
       <Footer/>
       </>
