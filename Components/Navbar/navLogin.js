@@ -7,14 +7,14 @@ export default function Navbar() {
         
       <nav className={styles1.NavbarItem}>
         <section className="flex justify-end p-5">
-        <Link href="Home">
+        <Link href="/">
             <Image 
                 alt="Home"
                 src={logo}
                 // layout="fill"
                 // objectFit="cover"
-                width={145}
-                height={145}
+                width={125}
+                height={125}
             />
         </Link> 
         </section>

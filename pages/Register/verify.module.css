@@ -1,42 +1,109 @@
-.otc {
-	position: relative;
-	width: 320px;
-	margin: 0 auto;
-	font-size: 2.65em;
+.otpgroup {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  column-gap: 10px;
+  margin-left: 6rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-.otc fieldset {
-	border: 0;
-	padding: 0;
-	margin: 0;
+.otpinput {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
 }
 
-.otc div {
-	display: flex;
-	align-items: center;
+.verifyCode {
+  padding: 40px 30px;
+  background: #fefefe;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 40px;
+  width: 300px;
+  border-radius: 5px;
+  height: 10rem;
+  box-shadow: #000;
+
 }
 
-.otc legend {
-	margin: 0 auto 1em;
-	color: #5555FF;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
 }
 
-.num[type="number"] {
-	width: .82em;
-	line-height: 1;
-	margin: .1em;
-	padding: 8px 0 4px;
-	font-size: 2.65em;
+.Verify__container h3 {
+  text-align: center;
+  color: #000
+}
+.Verify__container p {
 	text-align: center;
-	appearance: textfield;
-	-webkit-appearance: textfield;
-	border: 2px solid #BBBBFF;
-	color: purple;
-	border-radius: 4px;
+	color: #000;
+	
+  }
+  .Verify__container p span {
+	text-align: center;
+	color: #F9AF23;
+	
+  }
+  
+  
+
+.Verify__container {
+  text-align: auto;
+  color: white;
+  width: 60%;
+  
 }
 
-.num::-webkit-outer-spin-button,
-.num::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.Verify__container button {
+  width: 100%;
+  height: 3rem;
+  right: 125px;
+  top: 25px;
+  background-color: #f9af23;
+  border-radius: 28px;
+}
+.Verify__container .verifyCode {
+	width: 100%;
+	height: 3rem;
+	right: 125px;
+	top: 25px;
+	background-color: #f9af23;
+	border-radius: 28px;
+  }
+
+.Verify__container h1 {
+  text-align: center;
+  color: black;
+  margin-bottom: 1.5rem;
+}
+
+.Verify__container__form {
+  margin-left: 50%;
+  margin-top: 30px;
+  background: white;
+  padding: 2rem 5rem;
+  border-radius: 2rem;
+  border-style: ridge ;
+  border-color: white;
+  height: 100%;
+  width: 70%;
+  box-shadow: 5px 10px #C0C0C0;
+}
+.pRemember {
+  margin-top: 1rem;
+  float: left;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  color: #1d8aee;
 }
