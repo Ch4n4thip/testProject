@@ -16,10 +16,8 @@ export default function Navbar() {
                 width={145}
                 height={145}
             />
-        </Link>
+        </Link> 
         </section>
-        
-        
       </nav>
     )
   }
