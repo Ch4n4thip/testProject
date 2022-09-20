@@ -1,0 +1,102 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 95%;
+}
+
+.Register{
+    padding: 10rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem;
+    background-color: #1B2C55;;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+.register__container h2{
+    text-align: center;
+}
+
+.register__container {
+    text-align: auto;
+    color: white;
+
+}
+
+.register__container button{
+    width: 10rem;
+    height: 3rem;
+    right: 125px;
+    top: 25px;
+    background-color: #008d9b;
+    border-radius: 28px; 
+    color: white;
+    font-size: 20px;
+}
+
+.register__container input{
+    position: center;
+    width: 100%;
+    height: 3rem;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    border-radius: 14px; 
+    text-align:left;
+    padding: 1rem;
+}
+.register__container h1{
+    text-align: left;
+    color: black;
+    margin-bottom: 3.5rem;
+}
+
+.register__container__form{
+    background: white;
+    padding: 2rem 5rem;
+    border-radius:2rem ;
+    border: 1px solid transparent;
+    border-color: white;
+    color: black;
+}
+
+.register__option{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem ; 
+}
+
+.register__new{
+    color:#fc5b00;
+    font-size: 1.3rem;
+}
+
+.register__forgot{
+   color:#1d8aee;
+   font-size: 1.3rem;
+}
+
+.firstP {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.secondP{
+    text-align: center;
+    color:#fc833f;
+}
+
+.small{
+    color: black;
+    font-size: 16px;
+}
+
+.third{
+    text-align: center;
+}
+
+.third u{
+    color:#fc5b00;
+}
+
+

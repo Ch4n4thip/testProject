@@ -21,7 +21,7 @@ export default function Login() {
           </form> 
             <div className={styles1.login__option}>
               <Link href="#"><p className={styles1.login__forgot} >ลืมรหัสผ่าน</p></Link>
-              <Link href="#"><p className={styles1.login__new}>สมัครบัญชีใหม่</p></Link>
+              <Link href="../Register/Register"><p className={styles1.login__new}>สมัครบัญชีใหม่</p></Link>
             </div>
           </div>
         </div>        
