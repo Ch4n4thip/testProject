@@ -1,10 +1,12 @@
 import Link from "next/link";
+import styles1 from './Footer.module.css'
 
 export default function Footer() {
     return (
       <>
-        <footer>
-            <article>
+        <footer className={styles1.Foot}>
+        <div className="Foot__container">
+            <article >
                 <h2>เกี่ยวกับ Ject Jobe</h2>
                 <ul className='permalink'>
                     <li><Link href="#">เกี่ยวกับเรา</Link></li>
@@ -15,7 +17,7 @@ export default function Footer() {
                     <li><Link href="#">ติดต่อออนไลน์</Link></li>
                 </ul>
             </article>
-            <article>
+            <article >
                 <h2>วิธีชำระเงิน</h2>
                 <ul className='permalink'>
                     <li><Link href="#">เกี่ยวกับเรา</Link></li>
@@ -37,7 +39,7 @@ export default function Footer() {
                     <li><Link href="#">ติดต่อออนไลน์</Link></li>
                 </ul>
             </article>
-         
+            </div>
         </footer>
       </>
       

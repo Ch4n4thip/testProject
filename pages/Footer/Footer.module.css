@@ -1,0 +1,8 @@
+.Foot div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15rem;
+    margin: 0 auto 3rem;
+}
+

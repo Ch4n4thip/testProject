@@ -20,7 +20,7 @@ export default function Navbar() {
         </section>
         <section className="flex justify-end p-5">
         <div className={styles1.btn}>
-            <Link href="Login" ><p>Login</p></Link>
+            <Link href="/Login/Login"><p>Login</p></Link>
         </div>
         </section>
         {/* <Link href="Log" className="btn">
