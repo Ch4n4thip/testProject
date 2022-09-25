@@ -7,6 +7,7 @@ import logo from "../../img/Png 1250.png"
 import axios from 'axios'
 
 
+
 function regClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
@@ -16,9 +17,8 @@ function regClick() {
         
     })
     .catch((error) => {
-      console.log(error)
     })
-}
+    }
 
 export default function Register() {
     return (
@@ -40,7 +40,6 @@ export default function Register() {
               <h1>สมัครบัญชีใหม่</h1>
               <form action="" className={styles1.form}>
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
-                
                 <button type='submit' className='btn btn-primary' onClick={regClick}><Link href="/Register/Verify">ยืนยัน</Link> </button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
