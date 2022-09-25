@@ -17,21 +17,12 @@
     padding: 1.1rem;
     border-radius: 50%;
     display:flex;
-<<<<<<< HEAD
-    color: var(--color-light);
-    font-size: 1.1rem;
-}
-.Nav a:hover {
-    background: rgba(0,0,0,0.3);
-    
-=======
     color: black;
     font-size: 1.5rem;
     line-height: 50px;
 }
 .Nav a:hover {
     background: #359cbc;
->>>>>>> ae30f1924ce43db38e956134193d57a1d9e1b0ae
 }
 .Nav a.active{
     background: var(--color-primary);
