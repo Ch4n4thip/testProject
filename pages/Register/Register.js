@@ -4,6 +4,21 @@ import Footer from "../Footer/Footer";
 import styles1 from "./Register.module.css";
 import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
+import axios from 'axios'
+
+
+function regClick() {
+  const url = 'http://localhost:3000/api/regClick'
+  const Emaildata = document.querySelector('#Email').value
+  axios.post(url, {
+        email: Emaildata
+    }).then((response) => {
+        
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
 
 export default function Register() {
     return (
@@ -24,9 +39,9 @@ export default function Register() {
             <div className={styles1.register__container__form}>
               <h1>สมัครบัญชีใหม่</h1>
               <form action="" className={styles1.form}>
-                <input type="text" name='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
+                <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
                 
-                <button type='submit' className='btn btn-primary'><Link href="/Register/Verify">ยืนยัน</Link> </button> 
+                <button type='submit' className='btn btn-primary' onClick={regClick}><Link href="/Register/Verify">ยืนยัน</Link> </button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
                   <div className={styles1.secondP}>
