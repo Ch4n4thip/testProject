@@ -5,7 +5,7 @@ import styles1 from "./Register.module.css";
 import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
 import axios from 'axios'
-
+import Swal from 'sweetalert2'
 
 
 function regClick() {
@@ -17,8 +17,15 @@ function regClick() {
         
     })
     .catch((error) => {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Already have this mail',
+        footer: 'Change your email or contact our support'
+      })
     })
-    }
+    console.log("ERROR Already have it")
+}
 
 export default function Register() {
     return (
