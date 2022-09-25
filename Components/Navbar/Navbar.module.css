@@ -6,7 +6,18 @@
     padding: 0 10px;
     background-color: #1B2C55;;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    background-size: 300px 100px;
     height: 100px;
+    margin-bottom: 1.5rem;
+}
+.Logo{
+        
+    clear: left;
+    align-items: center;
+    font-size: 36px;
+    padding: 0 10px;
+    height: 100px;
+    margin-top: -1.25rem;
     margin-bottom: 1.5rem;
 }
 .NavbarItem input{
@@ -17,12 +28,12 @@
     top: 25px;
     font-size: 25px;
 }
-.NavbarItem Image {
+/* .NavbarItem Image {
     width: 145;
     height: 145;
     margin-top: 100px;
     margin-left: 29px;
-}
+} */
 .btn{
     position: absolute;
     width: 150px;
@@ -40,4 +51,4 @@
 }
 
 
-      
+    

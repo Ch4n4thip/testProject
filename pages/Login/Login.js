@@ -2,6 +2,8 @@ import Link from "next/link";
 import NavL from "../../Components/Navbar/navLogin";
 import Footer from "../Footer/Footer"
 import styles1 from './Login.module.css'
+import Image from 'next/image'
+import logo from "../../img/Png 1250.png"
 
 export default function Login() {
     return ( <>
@@ -9,7 +11,14 @@ export default function Login() {
     <NavL/> 
     <body className={styles1.Login}>
       <div className={styles1.login__container}>
-        <h2>PICTURE</h2>
+         <Image 
+                alt="Home"
+                src={logo}
+                // layout="fill"
+                // objectFit="cover"
+                width={500}
+                height={500}
+            />
       </div>
       <div className={styles1.login__container}> 
         <div className={styles1.login__container__form}>

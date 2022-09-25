@@ -2,6 +2,8 @@ import Link from "next/link";
 import Navbar from "../../Components/Navbar/navLogin";
 import Footer from "../Footer/Footer";
 import styles1 from "./Register.module.css";
+import Image from 'next/image'
+import logo from "../../img/Png 1250.png"
 
 export default function Register() {
     return (
@@ -9,7 +11,14 @@ export default function Register() {
       <Navbar/> 
         <body className={styles1.Register}>
           <div className={styles1.register__container}>
-            <h2>PICTURE</h2>
+          <Image 
+                alt="Home"
+                src={logo}
+                // layout="fill"
+                // objectFit="cover"
+                width={500}
+                height={500}
+            />
           </div>
           <div className={styles1.register__container}> 
             <div className={styles1.register__container__form}>
