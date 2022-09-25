@@ -3,11 +3,8 @@ import Head from 'next/head'
 import styles1 from '../styles/Home.module.css'
 import Navbar from '../Components/Navbar/nav'
 import SideBar from './SideNavBar/sideNav'
-<<<<<<< HEAD
 import { BsCart2 } from "react-icons/bs";
 import Link from 'next/link';
-=======
->>>>>>> ae30f1924ce43db38e956134193d57a1d9e1b0ae
 export default function index() {
   return (
     <div >
@@ -19,7 +16,6 @@ export default function index() {
       
       <Navbar/>
       <SideBar/>
-<<<<<<< HEAD
       <div className={styles1.card}>
         <div className={styles1.card_img}></div>
           <div className={styles1.card_info}>
@@ -32,10 +28,6 @@ export default function index() {
           <Link href="#"><BsCart2/></Link>
           </div>
         </div>
-=======
-      <div>
-        
->>>>>>> ae30f1924ce43db38e956134193d57a1d9e1b0ae
       </div>
 
     </div>
