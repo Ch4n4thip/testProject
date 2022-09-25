@@ -2,29 +2,36 @@
     background: rgba(0,0,0,0.3);
     width:max-content;
     display:block;
-    padding: 0.7rem 1.7rem;
+    padding: 3rem 1rem;
     z-index: 2;
     position:fixed;
-    left: 50% ;
+    margin-left: 5rem;
     transform: translateX(-50%);
-    bottom: 2rem;
-    display: flex;
-    gap: 0.8rem;
-    border-radius: 3rem;
+    margin-top : 3rem;
+    border-radius: 1.5rem;
     backdrop-filter: blur(15px);
 }
 
 .Nav a {
     background: transparent;
-    padding: 0.9rem;
+    padding: 1.1rem;
     border-radius: 50%;
     display:flex;
+<<<<<<< HEAD
     color: var(--color-light);
     font-size: 1.1rem;
 }
 .Nav a:hover {
     background: rgba(0,0,0,0.3);
     
+=======
+    color: black;
+    font-size: 1.5rem;
+    line-height: 50px;
+}
+.Nav a:hover {
+    background: #359cbc;
+>>>>>>> ae30f1924ce43db38e956134193d57a1d9e1b0ae
 }
 .Nav a.active{
     background: var(--color-primary);
