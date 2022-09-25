@@ -28,7 +28,7 @@ export default function Register() {
                       </p>
                   </div>
                   <div className={styles1.third}>
-                  <p>หากมีบัญชีอยู่แล้ว คุณสามารถ <Link href="#"><u>เข้าสู่ระบบ</u></Link></p>
+                  <p>หากมีบัญชีอยู่แล้ว คุณสามารถ <Link href="../Login//Login"><u>เข้าสู่ระบบ</u></Link></p>
                   </div>
               </div>
             </div>        
