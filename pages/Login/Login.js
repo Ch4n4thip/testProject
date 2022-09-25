@@ -7,7 +7,6 @@ import logo from "../../img/Png 1250.png"
 
 export default function Login() {
     return ( <>
-  
     <NavL/> 
     <body className={styles1.Login}>
       <div className={styles1.login__container}>
