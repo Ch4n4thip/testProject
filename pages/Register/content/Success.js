@@ -3,7 +3,6 @@ import { DataContext } from '../Verify'
 import React from "react";
 import styles1 from '../verify.module.css'
 import Footer from "../../Footer/Footer"
-import Checkmark from "../../../img/checkmark64.svg"
 import Image from 'next/image'
 import Link from "next/link";
 import { BiCheckCircle } from "react-icons/bi" ;
