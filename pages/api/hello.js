@@ -6,7 +6,7 @@ export default function handler(req, res) {
   
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("OnlineShopping");
+    var dbo = db.db("JectJobe");
     var myobj = { name: "Company Inc", address: "Highway 37" };
     dbo.collection("User").insertOne(myobj, function(err, res) {
       if (err) throw err;

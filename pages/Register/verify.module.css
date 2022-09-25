@@ -158,7 +158,6 @@
   font-size: 18px;
   font-weight: 500;
   margin-top: 15px;
-  margin-bottom: 30px;
 
  }
 
@@ -171,4 +170,14 @@
     font-size: 20px;
  }
 
+ .BiCheckCircle{
+    display: inline;
+    color: green;
+    width: 145px;
+    height: 145px;
+    font-weight: 200;
+    margin-left: 40%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 

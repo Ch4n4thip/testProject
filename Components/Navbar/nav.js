@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         
       <nav className={styles1.NavbarItem}>
-        <section className="flex justify-end p-5">
+        <section className={styles1.Logo}>
         <Link href="Home">
             <Image 
                 alt="Home"
@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* <Link href="Log" className="btn">
             Login
         </Link> */}
-        <div className="Search">
+        <div className={styles1.Search}>
             <input type="text" placeholder=" ค้นหา"/></div>
         {/* <Image src={logo} className="Logo" alt="Logo"/> */}
         {/* <Link href="/"></Link> */}

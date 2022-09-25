@@ -14,6 +14,10 @@ export default function index() {
       
       <Navbar/>
 
+      <div>
+        
+      </div>
+
     </div>
   )
 }
