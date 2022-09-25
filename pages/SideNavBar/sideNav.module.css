@@ -14,21 +14,19 @@
     backdrop-filter: blur(15px);
 }
 
-.Nav Link {
+.Nav a {
     background: transparent;
     padding: 0.9rem;
     border-radius: 50%;
     display:flex;
-    color: lightblue;
+    color: var(--color-light);
     font-size: 1.1rem;
 }
-.Nav Link:hover {
+.Nav a:hover {
     background: rgba(0,0,0,0.3);
+    
 }
-.Nav Link.active{
-    background: blue;
-    color: lightblue;
-}
-.Nav ul {
-    list-style-type: none;
+.Nav a.active{
+    background: var(--color-primary);
+    color:var(--color-bg);
 }

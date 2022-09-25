@@ -1,8 +1,10 @@
 import Head from 'next/head'
 // import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
+import styles1 from '../styles/Home.module.css'
 import Navbar from '../Components/Navbar/nav'
 import SideBar from './SideNavBar/sideNav'
+import { BsCart2 } from "react-icons/bs";
+import Link from 'next/link';
 export default function index() {
   return (
     <div >
@@ -14,8 +16,18 @@ export default function index() {
       
       <Navbar/>
       <SideBar/>
-      <div>
-        
+      <div className={styles1.card}>
+        <div className={styles1.card_img}></div>
+          <div className={styles1.card_info}>
+            <p className={styles1.text_title}>Product title </p>
+            <p className={styles1.text_body}>Product description and details</p>
+          </div>
+          <div className={styles1.card_footer}>
+          <span className={styles1.text_title}>$499.49</span>
+          <div className={styles1.card_button}>
+          <Link href="#"><BsCart2/></Link>
+          </div>
+        </div>
       </div>
 
     </div>
