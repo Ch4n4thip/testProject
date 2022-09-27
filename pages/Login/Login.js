@@ -8,7 +8,7 @@ import logo from "../../img/Png 1250.png"
 export default function Login() {
     return ( <>
     <NavL/> 
-    <body className={styles1.Login}>
+    <div className={styles1.Login}>
       <div className={styles1.login__container}>
          <Image 
                 alt="Home"
@@ -28,12 +28,12 @@ export default function Login() {
             <button type='submit' className='btn btn-primary'>เข้าสู่ระบบ</button> 
           </form> 
             <div className={styles1.login__option}>
-              <Link href="#"><p className={styles1.login__forgot} >ลืมรหัสผ่าน</p></Link>
-              <Link href="../Register/Register"><p className={styles1.login__new}>สมัครบัญชีใหม่</p></Link>
+              <p className={styles1.login__forgot}><Link href="#">ลืมรหัสผ่าน</Link></p>
+              <p  className={styles1.login__new}><Link href="../Register/Register">สมัครบัญชีใหม่</Link></p>
             </div>
           </div>
         </div>        
-    </body>
+    </div>
       <Footer/>
       </>
     );

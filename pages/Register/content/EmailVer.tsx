@@ -20,7 +20,7 @@ const Email = () => {
             
             <h1>กรุณาใส่รหัสยืนยันตัวตน</h1>
             <h3>รหัสยืนยันตัวตนจะถูกส่งไปทาง Email ที่</h3>
-            <h3>email@example.com</h3>
+            <h3>$req.body.email</h3>
             <form action="" className={styles1.form}>
               <OneTime value={otp} valueLength={6} onChange={onChange} /> 
               <p>ไม่ได้รับรหัส?</p>
