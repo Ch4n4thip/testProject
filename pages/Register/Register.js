@@ -52,16 +52,16 @@ export default function Register() {
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
                 <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/Register/Verify') ;regClick()}}>ยืนยัน</button> 
               </form> 
-                  <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
+                  <span className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</span>
                   <div className={styles1.secondP}>
-                      <p>
+                      <span>
                         <Link href="#">เงื่อนไขการให้บริการ </Link>
                         <small className={styles1.small}>และ </small>
                         <Link href="#"> นโยบายความเป็นส่วนตัว</Link> 
-                      </p>
+                      </span>
                   </div>
                   <div className={styles1.third}>
-                  <p>หากมีบัญชีอยู่แล้ว คุณสามารถ <Link href="../Login//Login"><u>เข้าสู่ระบบ</u></Link></p>
+                  <span>หากมีบัญชีอยู่แล้ว คุณสามารถ <Link href="../Login//Login"><u>เข้าสู่ระบบ</u></Link></span>
                   </div>
               </div>
             </div>        
