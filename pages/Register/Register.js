@@ -6,24 +6,31 @@ import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
 import axios from 'axios'
 import Swal from 'sweetalert2'
-
+import { useRouter } from 'next/router'
 
 function regClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
+  
   axios.post(url, {
         email: Emaildata
     }).then((response) => {
-        
+      
     })
     .catch((error) => {
-    
-    console.log("ERROR Already have it")
-    })
-
-}
+      Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Already have this mail',
+          footer: 'Change your email or contact our support'
+        })
+      })
+      console.log("ERROR Already have it")
+      location.href="/Register/Register"
+    }
 
 export default function Register() {
+  const router = useRouter()
     return (
       <>      
       <Navbar/> 
@@ -41,9 +48,9 @@ export default function Register() {
           <div className={styles1.register__container}> 
             <div className={styles1.register__container__form}>
               <h1>สมัครบัญชีใหม่</h1>
-              <form action="" className={styles1.form}>
-                <input type="email" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
-                <button type='submit' className='btn btn-primary' onClick={regClick}><Link href="/Register/Verify">ยืนยัน</Link> </button> 
+              <form action="/Register/Verify" method="get" className={styles1.form}>
+                <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
+                <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/Register/Verify') ;regClick()}}>ยืนยัน</button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
                   <div className={styles1.secondP}>

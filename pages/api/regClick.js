@@ -1,4 +1,3 @@
-
 export default async function handler(req, res) {
     var MongoClient = require('mongodb').MongoClient;
     var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
@@ -12,8 +11,6 @@ export default async function handler(req, res) {
           console.log("Created Data");
        
       });  
-      res.send("Hello World");
+      res.send(req.body.email);
     });
-  }
-  
-
+} 

@@ -29,8 +29,8 @@ export default function Login() {
             <button type='submit' className='btn btn-primary'>เข้าสู่ระบบ</button> 
           </form> 
             <div className={styles1.login__option}>
-              <Link href='#'><a className={styles1.login__forgot} >ลืมรหัสผ่าน</a></Link>
-              <Link href='../Register/Register'><a className={styles1.login__new}>สมัครบัญชีใหม่</a></Link>
+              <p className={styles1.login__forgot}><Link href="#">ลืมรหัสผ่าน</Link></p>
+              <p  className={styles1.login__new}><Link href="../Register/Register">สมัครบัญชีใหม่</Link></p>
             </div>
           </div>
         </div>        
