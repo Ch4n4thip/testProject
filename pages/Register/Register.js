@@ -12,11 +12,13 @@ function regClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
   const Namedata = document.querySelector('#Name').value
+  const Passdata = document.querySelector('#Password').value
   const Datedata = document.querySelector('#BirthDate').value
   
   axios.post(url, {
         email: Emaildata,
         name : Namedata,
+        password : Passdata ,
         birth_date : Datedata 
     }).then((response) => {
       
@@ -54,6 +56,7 @@ export default function Register() {
               <h1>สมัครบัญชีใหม่</h1>
               <form action="/Register/Verify" method="get" className={styles1.form}>
                 <input type="text" id='Name' placeholder=' โปรดใส่ชื่อผู้ใช้' required/>
+                <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
                 <input type="date" id='BirthDate' placeholder=' โปรดใส่ที่เกิด' required/>
                 <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/Register/Verify') ;regClick()}}>ยืนยัน</button> 
