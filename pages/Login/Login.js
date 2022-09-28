@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import NavL from "../../Components/Navbar/navLogin";
 import Footer from "../Footer/Footer"
 import styles1 from './Login.module.css'

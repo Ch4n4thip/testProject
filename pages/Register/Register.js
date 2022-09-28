@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Navbar from "../../Components/Navbar/navLogin";
+import Navbar from '../../Components/Navbar/navLogin';
 import Footer from "../Footer/Footer";
 import styles1 from "./Register.module.css";
 import Image from 'next/image'
@@ -11,9 +11,13 @@ import { useRouter } from 'next/router'
 function regClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
+  const Namedata = document.querySelector('#Name').value
+  const Datedata = document.querySelector('#BirthDate').value
   
   axios.post(url, {
-        email: Emaildata
+        email: Emaildata,
+        name : Namedata,
+        birth_date : Datedata 
     }).then((response) => {
       
     })
@@ -36,20 +40,22 @@ export default function Register() {
       <Navbar/> 
         <div className={styles1.Register}>
           <div className={styles1.register__container}>
-          <Image 
+            <Image 
                 alt="Home"
                 src={logo}
                 // layout="fill"
                 // objectFit="cover"
                 width={500}
                 height={500}
-            />
+            /> 
           </div>
           <div className={styles1.register__container}> 
             <div className={styles1.register__container__form}>
               <h1>สมัครบัญชีใหม่</h1>
               <form action="/Register/Verify" method="get" className={styles1.form}>
+                <input type="text" id='Name' placeholder=' โปรดใส่ชื่อผู้ใช้' required/>
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
+                <input type="date" id='BirthDate' placeholder=' โปรดใส่ที่เกิด' required/>
                 <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/Register/Verify') ;regClick()}}>ยืนยัน</button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
@@ -61,7 +67,7 @@ export default function Register() {
                       </p>
                   </div>
                   <div className={styles1.third}>
-                  <p>หากมีบัญชีอยู่แล้ว คุณสามารถ <Link href="../Login//Login"><u>เข้าสู่ระบบ</u></Link></p>
+                  <span>หากมีบัญชีอยู่แล้ว คุณสามารถ <Link href="../Login/Login"><u>เข้าสู่ระบบ</u></Link></span>
                   </div>
               </div>
             </div>        

@@ -4,14 +4,9 @@ export default async function handler(req, res) {
 
     MongoClient.connect(url, async function(err, db) {
       if (err) throw err;
-      var dbo = await db.db("Ject_Jobe");
-      var myobj = await { email: req.body.email};
-      var Check = await dbo.collection("User").findOne( myobj ) 
-      if(Check){ 
-        console.log(myobj)
-        return res.status(400).json("MEE LAWW")}    
-        
-        await  dbo.collection("User").insertOne(myobj, function(err, res) {
+      var dbo =   db.db("Ject_Jobe");
+      var myobj = await { email: req.body.email , name : req.body.name , BD : req.body.birth_date };          
+        dbo.collection("User").insertOne(myobj, function(err, res) {
           if (err) throw err;
           console.log("Created Data");
        
