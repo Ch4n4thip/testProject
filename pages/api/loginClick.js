@@ -5,24 +5,16 @@ export default async function handler(req, res) {
     MongoClient.connect(url, async function(err, db) {
       if (err) throw err;
       var dbo =   db.db("Ject_Jobe");
-      var emailC =  { email: req.body.email  } 
-      var passwordC =  { password : req.body.password }   
-      console.log(passwordC)
-      console.log(emailC)
+      var EmailC =  { email: req.body.email   }   
+      let PassC = { password : req.body.password }
+    
       console.log("START")  
-      var CheckForLogin = await dbo.collection("User").aggregate([
-        {
-          "$match": {
-            email: emailC,
-            password : passwordC
-          }
-        }
-      ])
-        
-      
-      
-      if(CheckForLogin){console.log("OK")}
-      else{ console.log("fail") }
-      });   
+      dbo.collection("User").find( {password : "asd"} , function(err , res) {
+        if (err) throw err;
+        console.log("Success"); 
+        console.log(res)      
+      });
+    }) 
+          
             res.send(req.body.email);                      
-        }
+    }
