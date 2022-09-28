@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import { DataContext } from '../Verify'
 import Link from "next/link";
 import React , {useState} from "react";
-
+import handler from '../../api/regClick'
 import styles1 from '../verify.module.css'
 import OneTime from "../OneTime";
 import Footer from "../../Footer/Footer"
@@ -20,7 +20,7 @@ const Email = () => {
             
             <h1>กรุณาใส่รหัสยืนยันตัวตน</h1>
             <h3>รหัสยืนยันตัวตนจะถูกส่งไปทาง Email ที่</h3>
-            <h3>$req.body.email</h3>
+            handler.email
             <form action="" className={styles1.form}>
               <OneTime value={otp} valueLength={6} onChange={onChange} /> 
               <p>ไม่ได้รับรหัส?</p>
