@@ -5,13 +5,20 @@ export default async function handler(req, res) {
     MongoClient.connect(url, async function(err, db) {
       if (err) throw err;
       var dbo =   db.db("Ject_Jobe");
-      var myobj = await { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date};      
-    //  var same = dbo.collection("user").    
-        dbo.collection("User").insertOne(myobj, function(err, res) {
+      var myobj =  { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date} 
+      var same =  { email: req.body.email }   
+      var Check = await dbo.collection("User").findOne( same ) 
+      if(Check){ 
+       // console.log(same)
+         
+        console.log("Have It")}
+      else{
+       dbo.collection("User").insertOne(myobj, function(err, res) {
           if (err) throw err;
-          console.log("Created Data");
+          console.log("Created Data"); 
        
-      });  
+      }); }
       res.send(req.body.email);
+    
     });
 } 
