@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles1 from '../styles/Home.module.css'
 import Navbar from '../Components/Navbar/nav'
 import SideBar from './SideNavBar/sideNav'
-import { BsCart2 } from "react-icons/bs";
+import { BsCart2 } from 'react-icons/bs';
 import Link from 'next/link';
 import Foot from "./Footer/Footer"
 export default function index() {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import NavL from "../../Components/Navbar/navLogin";
 import Footer from "../Footer/Footer"
 import styles1 from './Login.module.css'
@@ -8,7 +9,7 @@ import logo from "../../img/Png 1250.png"
 export default function Login() {
     return ( <>
     <NavL/> 
-    <body className={styles1.Login}>
+    <div className={styles1.Login}>
       <div className={styles1.login__container}>
          <Image 
                 alt="Home"
@@ -28,12 +29,12 @@ export default function Login() {
             <button type='submit' className='btn btn-primary'>เข้าสู่ระบบ</button> 
           </form> 
             <div className={styles1.login__option}>
-              <Link href="#"><p className={styles1.login__forgot} >ลืมรหัสผ่าน</p></Link>
-              <Link href="../Register/Register"><p className={styles1.login__new}>สมัครบัญชีใหม่</p></Link>
+              <Link href='#'><a className={styles1.login__forgot} >ลืมรหัสผ่าน</a></Link>
+              <Link href='../Register/Register'><a className={styles1.login__new}>สมัครบัญชีใหม่</a></Link>
             </div>
           </div>
         </div>        
-    </body>
+    </div>
       <Footer/>
       </>
     );
