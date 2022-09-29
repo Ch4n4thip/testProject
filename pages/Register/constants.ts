@@ -1,1 +1,0 @@
-export const RE_DIGIT = new RegExp('^[0-9]+$');

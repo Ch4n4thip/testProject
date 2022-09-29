@@ -39,7 +39,7 @@ export default function Register() {
         e.preventDefault()
         
         // Notice, we are also redirecting users to the protected route instead of the homepage after signing in. 
-        signIn('email', { callbackUrl: '../protected/middleware.js', email })
+        signIn('email', { callbackUrl: '../protected/_middleware.js', email })
       }
   const router = useRouter()
     return (
