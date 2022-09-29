@@ -6,7 +6,34 @@ import SideBar from './SideNavBar/sideNav'
 import { BsCart2 } from 'react-icons/bs';
 import Link from 'next/link';
 import Foot from "./Footer/Footer"
+import { getSession, signOut, useSession } from 'next-auth/react'
+
 export default function index() {
+  const { data: session, status } = useSession()
+
+  if (status === 'loading') {
+    return <>Loading...</>
+  }
+
+  if (status === 'authenticated') {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    )
+  }
+  if (status === 'unauthenticated') {
+    return (
+      <>
+        Not signed in <br />
+        <Link href='/api/auth/signin'>
+          <a>Login</a>
+        </Link>
+      </>
+    )
+  }
+
   return (
     <div >
       <Head>
@@ -34,4 +61,14 @@ export default function index() {
     </div>
  
   )
-}
+  }
+  export const getServerSideProps = async ctx => {
+    // Check if the user is authenticated from the server
+    const session = await getSession(ctx)
+    console.log({ session })
+    return {
+      props: {
+        session
+      }
+    }
+  }
