@@ -24,7 +24,12 @@ function regClick() {
       
     })
     .catch((error) => {
-      router.replace('/pages/Register/Register')
+      Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Already have this mail',
+          footer: 'Change your email or contact our support'
+        })
       })
       console.log("ERROR Already have it")
       location.href="/Register/Register"
