@@ -7,6 +7,8 @@ import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { send } from "process";
+import { BsSegmentedNav } from "react-icons/bs";
 
 function LoginClick() {
   const url = 'http://localhost:3000/api/loginClick'
@@ -19,18 +21,10 @@ function LoginClick() {
 
     }).then((response) => {
       
-    }).catch((error) => {
-      Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Already have this mail',
-          footer: 'Change your email or contact our support'
-        })
+    }).catch((error) => {    
       })
-      console.log("ERROR Already have it")
-      location.href="/Register/Register"
+
     }
-  
 
 
 export default function Login() {
@@ -54,7 +48,7 @@ export default function Login() {
           <form action="" className={styles1.form}>
             <input type="text" id='Email' placeholder=' โปรดใส่อีเมล' required/>
             <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
-            <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('#') ; LoginClick()}}>เข้าสู่ระบบ</button> 
+            <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/') ; LoginClick()}}>เข้าสู่ระบบ</button> 
           </form> 
             <div className={styles1.login__option}>
               <p className={styles1.login__forgot}><Link href="#">ลืมรหัสผ่าน</Link></p>

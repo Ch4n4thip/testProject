@@ -21,13 +21,11 @@ function regClick() {
         password : Passdata ,
         birth_date : Datedata 
     }).then((response) => {
-      
+   
     })
     .catch((error) => {
-      router.replace('/pages/Register/Register')
+
       })
-      console.log("ERROR Already have it")
-      location.href="/Register/Register"
     }
 
 export default function Register() {
@@ -53,8 +51,8 @@ export default function Register() {
                 <input type="text" id='Name' placeholder=' โปรดใส่ชื่อผู้ใช้' required/>
                 <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
-                <input type="date" id='BirthDate' placeholder=' โปรดใส่ที่เกิด' required/>
-                <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/Register/Verify') ;regClick()}}>ยืนยัน</button> 
+                <input type="date" id='BirthDate' placeholder=' โปรดใส่วันที่เกิด' required/>
+                <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/') ;regClick()}}>ยืนยัน</button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
                   <div className={styles1.secondP}>
