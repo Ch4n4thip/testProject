@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
     "mongodb": "^4.10.0",
     "next": "12.3.0",
     "nextjs-components": "^0.10.2",

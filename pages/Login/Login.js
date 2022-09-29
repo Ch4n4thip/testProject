@@ -20,15 +20,15 @@ function LoginClick() {
         password : PassCheck 
 
     }).then((response) => {
-      
+      console.log("OK")
     }).catch((error) => {    
       })
-
+      console.log("ERROR")
     }
 
 
 export default function Login() {
-    const router = useRouter()
+   
     return ( <>
     <NavL/> 
     <div className={styles1.Login}>
@@ -48,7 +48,7 @@ export default function Login() {
           <form action="" className={styles1.form}>
             <input type="text" id='Email' placeholder=' โปรดใส่อีเมล' required/>
             <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
-            <button type='submit' className='btn btn-primary' onClick={()=>{router.replace('/') ; LoginClick()}}>เข้าสู่ระบบ</button> 
+            <button type='submit' className='btn btn-primary' onClick={()=>{ LoginClick()}}>เข้าสู่ระบบ</button> 
           </form> 
             <div className={styles1.login__option}>
               <p className={styles1.login__forgot}><Link href="#">ลืมรหัสผ่าน</Link></p>
