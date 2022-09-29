@@ -10,8 +10,8 @@ export default async function handler(req, res) {
       var Check = await dbo.collection("User").findOne( same ) 
       if(Check){ 
        // console.log(same)
-         
         console.log("Have It")}
+        
       else{
        dbo.collection("User").insertOne(myobj, function(err, res) {
           if (err) throw err;
@@ -19,6 +19,8 @@ export default async function handler(req, res) {
        
       }); }
       res.send(req.body.email);
+
+
     
     });
 } 
