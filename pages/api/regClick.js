@@ -9,8 +9,8 @@ export default async function handler(req, res) {
     MongoClient.connect(url, async function(err, db) {
       if (err) throw err;
       let dbo =   db.db("Ject_Jobe");
-   //   let myobj =  { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date} 
-   //   let same =  { email: req.body.email }   
+      let myobj =  { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date} 
+      let same =  { email: req.body.email }   
       let CheckM = await dbo.collection("User").findOne( {email} ) 
       if(CheckM){ 
        // console.log("have it") }
@@ -21,12 +21,12 @@ export default async function handler(req, res) {
  
   
       
-    //   dbo.collection("User").insertOne(myobj, function(err, res) {
-    //      if (err) throw err;
-    //     console.log("Created Data"); 
+       dbo.collection("User").insertOne(myobj, function(err, res) {
+          if (err) throw err;
+         console.log("Created Data"); 
        
     });
     
           
- //   })
+   })
 } 
