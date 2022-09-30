@@ -64,7 +64,7 @@ export default function Register() {
           <div className={styles1.register__container}> 
             <div className={styles1.register__container__form}>
               <h1>สมัครบัญชีใหม่</h1>
-              <form action="/Register/Register" method="get" onSubmit={sendLoginVerification} className={styles1.form}>
+              <form action="/Register/Register" method="get"  className={styles1.form}>
                 <input type="text" id='Name' placeholder=' โปรดใส่ชื่อผู้ใช้' required/>
                 <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
                 <input type="email" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' value={email} required onChange={e => setEmail(e.target.value)}/>

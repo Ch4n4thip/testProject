@@ -1,0 +1,150 @@
+
+/* Form&Email */
+
+.kyc__container__form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-left: 50%;
+    text-align:center;
+  }
+  .kyc__container .Upload {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-right: 55%;
+  }
+  
+  .kyc__container h3 {
+    text-align: center;
+    color: #000
+  }
+  .kyc__container p {
+      text-align: center;
+      color: #000;
+      
+    }
+    .kyc__container p span {
+      text-align: center;
+      color: #F9AF23;
+      
+    }
+  .kyc__container__Upload {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align:center;
+    float: left;
+
+  }
+  .Upload{
+    width: 350px;
+    height: 250px;
+    display: none;
+    text-align:center;
+  }
+  
+  .kyc__container {
+    text-align: auto;
+    color: white;
+    width: 30rem;
+    
+  }
+  
+  .kyc__container button {
+    width: 100%;
+    height: 3rem;
+    right: 125px;
+    top: 25px;
+    background-color: #008d9b;
+    border-radius: 28px;
+    color: #ffffff;
+  }
+ 
+  
+  .kyc__container h1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 1.5rem;
+  }
+  
+  .kyc__container{
+    margin-left: 15rem;
+    margin-top: 30px;
+    background: white;
+    padding: 2rem 5rem;
+    border-radius: 2rem;
+    /* border-style: ridge ; */
+    border-color: white;
+    height: 100%;
+    width: 90rem;
+    /* box-shadow: 5px 10px #C0C0C0; */
+    box-shadow:
+    0.5px 1.8px 2.5px rgba(0, 0, 0, 0.063),
+    1.7px 5.8px 5px rgba(0, 0, 0, 0.07),
+    3.9px 13.2px 7.9px rgba(0, 0, 0, 0.07),
+    7.9px 26.7px 11.8px rgba(0, 0, 0, 0.066),
+    15.7px 53.2px 18.8px rgba(0, 0, 0, 0.062),
+    37px 125px 40px rgba(0, 0, 0, 0.07);
+  }
+  /* Password */
+  .input {
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    
+   }
+   
+   .input:focus  {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #7a9cc6;
+   }
+   .input:hover{
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #7a9cc6;
+   }
+   .input::placeholder {
+    color: #777;
+   }
+  
+   .input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+   }
+  
+   .buttonForm{
+    width: 10rem;
+    height: 3rem;
+    right: 125px;
+    top: 25px;
+    background-color: #008d9b;
+    border-radius: 28px;
+    color: #ffffff;
+    text-align:center;
+   }
+   .buttonUpload{
+    width: 10rem;
+    height: 3rem;
+    right: 125px;
+    top: 25px;
+    background-color: #008d9b;
+    border-radius: 28px;
+    color: #ffffff;
+    text-align:center;
+    margin-top: 2.5rem;
+   }
+  
+  
+
+ 
+  
+  

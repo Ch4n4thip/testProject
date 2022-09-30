@@ -13,7 +13,7 @@ export default function Footer() {
                     <li><Link href="#">นโยบายของเรา</Link></li>
                     <li><Link href="#">นโยบายความเป็นส่วนตัว</Link></li>
                     <li><Link href="#">Promotion</Link></li>
-                    <li><Link href="#">Seller Centre</Link></li>
+                    <li><Link href="/Seller/KYC/sellerKyc">Seller Centre</Link></li>
                     <li><Link href="#">ติดต่อออนไลน์</Link></li>
                 </ul>
             </article>
@@ -35,7 +35,7 @@ export default function Footer() {
                     <li><Link href="#">นโยบายของเรา</Link></li>
                     <li><Link href="#">นโยบายความเป็นส่วนตัว</Link></li>
                     <li><Link href="#">Promotion</Link></li>
-                    <li><Link href="#">Seller Centre</Link></li>
+                    <li><Link href="../../pages_seller/kyc.js">Seller Centre</Link></li>
                     <li><Link href="#">ติดต่อออนไลน์</Link></li>
                 </ul>
             </article>
