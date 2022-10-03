@@ -6,13 +6,17 @@ import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
 import axios from 'axios'
 import Swa from 'sweetalert2'
-import toast, { Toaster } from 'react-hot-toast';
+
 import {Router, useRouter} from 'next/router'
 
 
 
 
-function RegClick() {
+
+
+export default function Register() {
+  const router = useRouter();
+ function RegClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
   const Passdata = document.querySelector('#Password').value
@@ -26,16 +30,12 @@ function RegClick() {
         password : Passdata ,
         birth_date : Datedata 
     }).then((response) => {
-      toast.success('Successfully created!');
+      router.push('../Login/Login.js')
+      console.log(response.data)
+    }).catch((error) => {
+      console.log(error.response.data)
     })
-    .catch((error) => {
-      console.log("console have it")
-      toast.error('This is an error!');
-      })
     }
-
-export default function Register() {
- 
     return (
       <>      
       <Navbar/> 
@@ -58,7 +58,7 @@ export default function Register() {
                 <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
                 <input type="date" id='BirthDate' placeholder=' โปรดใส่วันที่เกิด' required/>
-                <button type='submit' className='btn btn-primary' onClick={()=> RegClick()}>ยืนยัน</button> 
+                <button type='submit' className='btn btn-primary' onClick={()=> {RegClick()}}>ยืนยัน</button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
                   <div className={styles1.secondP}>
