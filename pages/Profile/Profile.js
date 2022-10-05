@@ -1,6 +1,7 @@
 import Navbar from '../../Components/Navbar/nav'
 import SideNav from '../SideNavBar/sideNav'
 import Styles1 from './Profile.module.css'
+import Foot from '../Footer/Footer'
 
 
 export default function Profile() {
@@ -29,6 +30,7 @@ export default function Profile() {
         <button>เพิ่มที่อยู่</button>
 
     </div>
+    <Foot/>
     </> 
  
   )
