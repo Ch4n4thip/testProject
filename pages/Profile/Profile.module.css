@@ -10,6 +10,7 @@
     margin-left: 20%;
     margin-right:20%;
     text-align: center;
+    gap: 5rem;
 }
 .Container__Info{
     display: grid;
@@ -39,4 +40,18 @@
     text-align: left;
     margin-left : 2rem;
 
+}
+.Container__Me__In{
+    display: flex;
+    flex-direction: column;
+}
+.Container__Me__In button{
+    width: 50%;
+    height: 15%;
+    margin-top: 1.3rem;
+    margin-bottom:1rem;
+    background-color: #008d9b;
+    border-radius: 28px; 
+    color: white;
+    font-size: 20px;
 }
