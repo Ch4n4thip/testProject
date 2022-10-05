@@ -7,17 +7,18 @@ import {FiFilter} from 'react-icons/fi'
 import { useState } from 'react'
 import styles1 from './sideNav.module.css'
 import Link from 'next/link'
+
 const sideNav = () => {
   const [activeNav,setActive] = useState('#');
   return (
     <nav className={styles1.Nav}>
-      <a href="#"  onClick={()=>setActive('#')} className={activeNav === '#' ? 'active' : ''}><GrHome/></a>
-      <a href="#"  onClick={()=>setActive('#about')} className={activeNav === '#about' ? 'active' : ''} ><GrCart/></a>   
-      <a href="#"  onClick={()=>setActive('#exp')} className={activeNav === '#exp' ? 'active' : ''} ><RiCoupon2Line/></a>    
-      <a href="#"   onClick={()=>setActive('#services')} className={activeNav === '#services' ? 'active' : ''} ><RiScales3Line/></a>      
-      <a href="#"  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><BiCommentDetail/></a>
-      <a href="#"  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><AiOutlineHistory/></a>
-      <a href="#"  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><FiFilter/></a>
+      <a href='/'  onClick={()=>setActive('#')} className={activeNav === '#' ? 'active' : ''}><GrHome/></a>
+      <a href='' onClick={()=>setActive('#about')} className={activeNav === '#about' ? 'active' : ''} ><GrCart/></a>   
+      <a href=''  onClick={()=>setActive('#exp')} className={activeNav === '#exp' ? 'active' : ''} ><RiCoupon2Line/></a>    
+      <a href=''   onClick={()=>setActive('#services')} className={activeNav === '#services' ? 'active' : ''} ><RiScales3Line/></a>      
+      <a href=''  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><BiCommentDetail/></a>
+      <a href=''  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><AiOutlineHistory/></a>
+      <a href=''  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><FiFilter/></a>
     </nav>
   )
 }

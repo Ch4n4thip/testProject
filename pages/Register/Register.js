@@ -5,7 +5,7 @@ import styles1 from "./Register.module.css";
 import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
 import axios from 'axios'
-import Swa from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 import {Router, useRouter} from 'next/router'
 
@@ -30,9 +30,23 @@ export default function Register() {
         password : Passdata ,
         birth_date : Datedata 
     }).then((response) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Register Success',
+        showConfirmButton: false,
+        timer: 1500
+      })
       router.push('../Login/Login')
       console.log(response.data)
     }).catch((error) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Already Have This Email',
+        showConfirmButton: false,
+        timer: 1500
+      })
       console.log(error.response.data)
     })
     }

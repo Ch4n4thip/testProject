@@ -9,6 +9,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { send } from "process";
 import { BsSegmentedNav } from "react-icons/bs";
+import Swal from 'sweetalert2'
 
 
 
@@ -25,11 +26,24 @@ export default function Login() {
       password: PassCheck
 
     }).then((response) => {
-
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Logged In Welcome',
+        showConfirmButton: false,
+        timer: 1500
+      })
       router.push('/')
 
       console.log(response.data)
     }).catch((error) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Email or Password is Incorrect',
+        showConfirmButton: false,
+        timer: 1500
+      })
       console.log(error.response.data)
     })
 
