@@ -16,7 +16,7 @@ import {Router, useRouter} from 'next/router'
 
 export default function Register() {
   const router = useRouter();
- function RegClick() {
+  function RegClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
   const Passdata = document.querySelector('#Password').value
@@ -30,7 +30,7 @@ export default function Register() {
         password : Passdata ,
         birth_date : Datedata 
     }).then((response) => {
-      router.push('../Login/Login.js')
+      router.push('../Login/Login')
       console.log(response.data)
     }).catch((error) => {
       console.log(error.response.data)
@@ -53,13 +53,13 @@ export default function Register() {
           <div className={styles1.register__container}> 
             <div className={styles1.register__container__form}>
               <h1>สมัครบัญชีใหม่</h1>
-              <form  method="" className={styles1.form}>
+              <div  method="" className={styles1.form}>
                 <input type="text" id='Name' placeholder=' โปรดใส่ชื่อผู้ใช้' required/>
                 <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
                 <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
                 <input type="date" id='BirthDate' placeholder=' โปรดใส่วันที่เกิด' required/>
                 <button type='submit' className='btn btn-primary' onClick={()=> {RegClick()}}>ยืนยัน</button> 
-              </form> 
+              </div> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
                   <div className={styles1.secondP}>
                       <span>
