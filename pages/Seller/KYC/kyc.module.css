@@ -1,18 +1,34 @@
 
 /* Form&Email */
 
-.kyc__container__form form {
+.kyc__container__form form  {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     margin-left: 50%;
     text-align:center;
+    width: auto;
+    height: auto;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    
   }
-  .kyc__container .Upload {
+  
+  
+  .kyc__container .UploadImg {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    margin-right: 55%;
+    margin-top: 4rem;
+    margin-left: 5rem;
+    
+    /* margin-right: 50%; */
+  }
+  .kyc__container .UploadImg img {
+    /* margin-left: 4.5rem; */
+    width: 350px;
+    height: 200px;
+    border: none;
   }
   
   .kyc__container h3 {
@@ -35,20 +51,17 @@
     gap: 1.2rem;
     text-align:center;
     float: left;
-
+    width: 35%;
   }
-  .Upload{
-    width: 350px;
-    height: 250px;
+  /* .UploadImg{
     display: none;
     text-align:center;
   }
-  
+   */
   .kyc__container {
     text-align: auto;
-    color: white;
-    width: 30rem;
-    
+    color: #000;
+
   }
   
   .kyc__container button {
@@ -70,12 +83,13 @@
   
   .kyc__container{
     margin-left: 15rem;
-    margin-top: 30px;
-    background: white;
+    margin-top: 5rem;
+    background: #E4E4E4 ;
     padding: 2rem 5rem;
     border-radius: 2rem;
-    /* border-style: ridge ; */
-    border-color: white;
+    /* border-style: groove  ; */
+    
+    border-color: #333333;
     height: 100%;
     width: 90rem;
     /* box-shadow: 5px 10px #C0C0C0; */
@@ -113,7 +127,7 @@
     border-color: #7a9cc6;
    }
    .input::placeholder {
-    color: #777;
+    color: #000;
    }
   
    .input:focus::placeholder {
@@ -144,7 +158,9 @@
    }
   
   
-
+   .kyc__container pre{
+    display: none;
+   }
  
   
   

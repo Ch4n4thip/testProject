@@ -5,18 +5,21 @@ import styles1 from "./Register.module.css";
 import Image from 'next/image'
 import logo from "../../img/Png 1250.png"
 import axios from 'axios'
-import Swal from 'sweetalert2'
-import { useRouter } from 'next/router'
-import React, { useState } from 'react'
-import { signIn } from 'next-auth/react'
+import Swa from 'sweetalert2'
+import toast, { Toaster } from 'react-hot-toast';
+import {Router, useRouter} from 'next/router'
 
-function regClick() {
+
+
+
+function RegClick() {
   const url = 'http://localhost:3000/api/regClick'
   const Emaildata = document.querySelector('#Email').value
-  const Namedata = document.querySelector('#Name').value
   const Passdata = document.querySelector('#Password').value
+  const Namedata = document.querySelector('#Name').value
   const Datedata = document.querySelector('#BirthDate').value
   
+
   axios.post(url, {
         email: Emaildata,
         name : Namedata,
@@ -24,29 +27,16 @@ function regClick() {
         birth_date : Datedata 
         
     }).then((response) => {
-      alert("กรุณายืนยันตัวตนก่อนเข้าใช้งาน ("+Emaildata+")");
+      toast.success('Successfully created!');
     })
     .catch((error) => {
-      Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Already have this mail',
-          footer: 'Change your email or contact our support'
-        })
+      console.log("console have it")
+      toast.error('This is an error!');
       })
-      console.log("ERROR Already have it")
     }
 
 export default function Register() {
-  const [email, setEmail] = useState('')
-    
-      const sendLoginVerification = e => {
-        e.preventDefault()
-        
-        // Notice, we are also redirecting users to the protected route instead of the homepage after signing in. 
-        signIn('email', { callbackUrl: '../protected/_middleware.js', email })
-      }
-  const router = useRouter()
+ 
     return (
       <>      
       <Navbar/> 
@@ -64,12 +54,12 @@ export default function Register() {
           <div className={styles1.register__container}> 
             <div className={styles1.register__container__form}>
               <h1>สมัครบัญชีใหม่</h1>
-              <form action="/Register/Register" method="get"  className={styles1.form}>
+              <form  method="" className={styles1.form}>
                 <input type="text" id='Name' placeholder=' โปรดใส่ชื่อผู้ใช้' required/>
                 <input type="password" id='Password' placeholder=' โปรดใส่รหัสผ่าน' required/>
-                <input type="email" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' value={email} required onChange={e => setEmail(e.target.value)}/>
-                <input type="date" id='BirthDate' placeholder=' โปรดใส่ที่เกิด' required/>
-                <button type='submit' className='btn btn-primary' onClick={()=>{ regClick()}}>ยืนยัน</button> 
+                <input type="text" id='Email' placeholder=' โปรดใส่อีเมลเพื่อทำการยืนยัน' required/>
+                <input type="date" id='BirthDate' placeholder=' โปรดใส่วันที่เกิด' required/>
+                <button type='submit' className='btn btn-primary' onClick={()=> RegClick()}>ยืนยัน</button> 
               </form> 
                   <p className={styles1.firstP} >โดยการเปิดบัญชี Ject Jobe ท่านรับทราบและตกลงตาม</p>
                   <div className={styles1.secondP}>

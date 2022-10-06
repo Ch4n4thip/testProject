@@ -1,28 +1,24 @@
-export default async function handler(req, res) {
-    var MongoClient = require('mongodb').MongoClient;
-    var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
+import { useRouter } from 'next/router';
 
-    MongoClient.connect(url, async function(err, db) {
-      if (err) throw err;
-      var dbo =   db.db("Ject_Jobe");
-      var emailC =  { email: req.body.email  } 
-      var passwordC =  { password : req.body.password }   
-      console.log(passwordC)
-      console.log(emailC)
-      console.log("START")  
-      var CheckForLogin = await dbo.collection("User").aggregate([
-        {
-          "$match": {
-            email: emailC,
-            password : passwordC
-          }
-        }
-      ])
-        
-      
-      
-      if(CheckForLogin){console.log("OK")}
-      else{ console.log("fail") }
-      });   
-            res.send(req.body.email);                      
-        }
+
+export default async function handler(req, res) {
+  var MongoClient = require('mongodb').MongoClient;
+  const { email, password } = req.body
+  var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
+
+  MongoClient.connect(url, async function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("Ject_Jobe");
+    var CheckM = await dbo.collection("User").findOne({ email })
+    if (CheckM) {
+      // console.log("have Email")
+      // console.log(CheckM.password)
+      if (CheckM.password == password) {
+        res.status(200).send({message: "logged in"})
+      }
+      else { res.status(400).send({message: "Email or password incorrect"}) }
+    }else { 
+      return res.status(400).send({message: "Don't have this email"}) 
+    }
+  });
+}
