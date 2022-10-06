@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import logo from "../../img/Black Font 750.png"
 import styles1 from './NavLogin.module.css'
-export default function Navbar() {
+export default function NavbarLogin() {
     return (
         
       <nav className={styles1.NavbarItem}>

@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router';
-
 
 export default async function handler(req, res) {
   var MongoClient = require('mongodb').MongoClient;
