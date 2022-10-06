@@ -26,11 +26,8 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.4.0",
-<<<<<<< HEAD
     "react-toastify": "^9.0.8",
-=======
     "reactjs-popup": "^2.0.5",
->>>>>>> 5d5467d992cccfbfc16612f0cbdbe730ca1f7169
     "sweetalert2": "^11.4.33"
   },
   "devDependencies": {
