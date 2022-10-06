@@ -9,8 +9,7 @@ export default async function handler(req, res) {
     MongoClient.connect(url, async function(err, db) {
       if (err) throw err;
       let dbo =   db.db("Ject_Jobe");
-      let myobj =  { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date , role : "M" , gender : "none"} 
-      let same =  { email: req.body.email }   
+      let myobj =  { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date , role : "M" , gender : "none" , Tel : "0"}  
       let CheckM = await dbo.collection("User").findOne( {email} ) 
       if(CheckM){ 
        // console.log("have it") }

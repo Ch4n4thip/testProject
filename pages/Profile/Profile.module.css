@@ -70,6 +70,7 @@
     border-color: white;
     color: black;
     margin-top: 25%;
+    box-shadow: inset;
 }
 .Popup__container input{
     position: center;
@@ -92,6 +93,14 @@
     font-size: 20px;
 }
 .form__gender{
-    display: inline;
-    inline-size: auto;
+    width: max-content;
+}
+.gender {
+    font-size: 28px;
+}
+.gender__select{
+    width: fit-content;
+    font-size: 26px;
+    border-radius: 2rem;
+    text-align: center;
 }
