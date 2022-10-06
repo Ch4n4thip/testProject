@@ -2,6 +2,7 @@ import Navbar from '../../Components/Navbar/nav'
 import SideNav from '../SideNavBar/sideNav'
 import Styles1 from './Profile.module.css'
 import Foot from '../Footer/Footer'
+import Popup from 'reactjs-popup'
 
 
 export default function Profile() {
@@ -21,7 +22,21 @@ export default function Profile() {
             
         </div>
         <div className={Styles1.Container__Me__In}>
-        <button>แก้ไข</button>
+          <Popup trigger={<button>แก้ไข</button>} position="left center" >
+            <div className={Styles1.Popup__container}>
+              <div  method="" className={Styles1.form}>
+                <input type="text" id='Name' placeholder=' โปรดใส่ชื่อใหม่' required/>
+                <input type="date" id='BirthDate' placeholder=' โปรดใส่วันที่เกิด' required/>
+                 <div className={Styles1.form__gender}>
+                  <input type="radio" id='gender' value='male'>ชาย</input>
+                  <input type="radio" id='gender' value='female'>หญิง</input>
+                  <input type="radio" id='gender' value='none'>ไม่ระบุ</input>
+                </div>
+                <button type='submit' className='btn btn-primary' onClick={()=> {RegClick()}}>ยืนยัน</button> 
+              </div> 
+            </div>  
+          </Popup>
+        
         <button>คูปองของฉัน</button>
         </div>
     </div>
