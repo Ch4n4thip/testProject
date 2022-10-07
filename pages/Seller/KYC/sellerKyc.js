@@ -5,7 +5,7 @@ import styles1 from './kyc.module.css'
 import Footer from "../../Footer/Footer"
 import axios from 'axios';
 import Navbar from '../../../Components/Navbar/nav';
-import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2'
 
 
 
@@ -66,7 +66,7 @@ export default function userKyc() {
           Key: 'KYCSeller/' + 'BookBank/' + imgNameBank,
           Body: file
         },
-        partSize: 1024 * 1024 * 10, // optional size of each part, in bytes, at least 10MB
+        partSize: 1024 * 1024 * 5, // optional size of each part, in bytes, at least 10MB
         leavePartsOnError: false, // optional manually handle dropped parts
       });
       parallelUploads3.on("httpUploadProgress", (progress) => {
@@ -88,20 +88,26 @@ export default function userKyc() {
           img: imgURL,
           imgBank: imgURLBank
         }).then( res => {
-          resolve( res.data.message )
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'รอยืนยันจากผู้ดูแลระบบ',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(res.data)
         }).catch( err => {
-          reject( err.response.data.message )
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(err.response.data)
         })
       )
-      toast.promise(myPromise, {
-        pending: "Promise is pending",
-        success: {
-          render({data}){return data}
-        },
-        error: {
-          render({data}){return data}
-        }
-      })
+      
     }catch (e){
       console.log(e);
     }
@@ -115,30 +121,20 @@ export default function userKyc() {
     return (
         <>
       <Navbar/>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      
       <div className={styles1.kyc__container}> 
       <div className={styles1.kyc__container__Upload}>
       <div className={styles1.UploadImg}>
       
         <label htmlFor="Upload" className="form-label">รูปบัตรประชาชน</label>
         <input className="form-control" type="file" id="Upload" name='Upload' onChange={saveFile}></input>
-        <div id='containerPreviewImg'></div>
+        <div className={styles1.containerPreview} id='containerPreviewImg'></div>
       </div>
       <div className={styles1.UploadImg}>
       
         <label htmlFor="UploadBank" className="form-label">รูปหน้าบัญชีธนาคาร</label>
         <input className="form-control" type="file" id="UploadBank" name='UploadBank'onChange={saveFileBank} ></input>
-        <div  id='containerPreviewImgBank'></div>
+        <div className={styles1.containerPreview} id='containerPreviewImgBank'></div>
       </div>
       </div>
       <div className={styles1.kyc__container__form}>
@@ -162,6 +158,7 @@ export default function userKyc() {
           
           </div>
         </div>
+        <Footer/>
 
         </>
 )

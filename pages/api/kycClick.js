@@ -19,7 +19,7 @@
          imgCard: req.body.img,
          imgBank: req.body.imgBank
         } 
-        res.status(400).send("Have it");
+        res.status(200).send("success");
 
       
        dbo.collection("KYCSeller").insertOne(myobj, function(err, res) {
