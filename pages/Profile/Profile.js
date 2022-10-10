@@ -32,6 +32,19 @@ export default function Profile() {
       console.log(error.response.data)
     })
   }
+
+  function AddAddress(){
+    const url = 'http://localhost:3000/api/newAddressClick'
+    const NewAddress = document.querySelector('#newAddress').value
+
+    axios.post(url,{
+      Address: NewAddress
+    }).then((response) => {
+
+    }).catch((error) => {
+
+    })
+  }
  
   return (
     <>
@@ -73,8 +86,16 @@ export default function Profile() {
     </div>
     <div className={Styles1.Container__Info}>
         <h1>ที่อยู่ของฉัน</h1>
-        <button>เพิ่มที่อยู่</button>
-
+        <div className={Styles1.Container__info__button}>
+        <Popup trigger={<button>เพิ่มที่อยู่</button>} position="left center" >
+            <div className={Styles1.Popup__container2}>
+              <form  action='./Profile' method="" className={Styles1.form}>
+                <input type="text" id='newAddress' placeholder=' โปรดใส่ที่อยู่' required/>
+                <button type='submit' className='btn btn-primary' onMouseDown={()=> {AddAddress()} }>ยืนยัน</button> 
+              </form> 
+            </div>  
+          </Popup>
+        </div>
     </div>
     <Foot/>
     </> 
