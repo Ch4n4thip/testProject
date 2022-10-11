@@ -1,0 +1,45 @@
+.Container {
+    text-align: center;
+    margin-top: 12rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border-radius : 2rem;
+    border: 1px solid transparent;
+    border-color: black;
+    width:50%;
+    height:50%;
+    padding: 3rem;
+    margin-left: 25%;
+}
+.SubContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+}
+
+.SubContainer button {
+    width: 5rem;
+    margin-left: 42%;
+}
+.SubContainer input{
+    position: center;
+    width: 100%;
+    height: 3rem;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    border-radius: 14px; 
+    text-align:left;
+    padding: 1rem;
+}
+.SubContainer textarea{
+    position: center;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    border-radius: 14px; 
+    text-align:left;
+    padding: 1rem;
+}
