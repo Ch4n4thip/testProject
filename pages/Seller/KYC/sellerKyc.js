@@ -7,7 +7,7 @@ import axios from 'axios';
 import Navbar from '../../../Components/Navbar/nav';
 import Swal from 'sweetalert2'
 
-
+import {Router, useRouter} from 'next/router'
 
 export default function userKyc() {
   const [file, setFile] = useState('')
@@ -76,7 +76,6 @@ export default function userKyc() {
       const axiosURL = 'http://localhost:3000/api/kycClick'
       const imgURL = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/KYCSeller/' + 'Card/' + imgName
       const imgURLBank = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/KYCSeller/' + 'BookBank/' + imgNameBank
-      const myPromise = new Promise( async (resolve, reject) =>
         await axios.post( axiosURL , {
           fullName: inputData.fullName,
           shopName: inputData.shopName,
@@ -106,7 +105,7 @@ export default function userKyc() {
           })
           console.log(err.response.data)
         })
-      )
+      
       
     }catch (e){
       console.log(e);
@@ -124,7 +123,19 @@ export default function userKyc() {
       
       <div className={styles1.kyc__container}> 
       <div className={styles1.kyc__container__Upload}>
-      <div className={styles1.UploadImg}>
+      <div className={styles1.fileDropArea}>
+            <div className={styles1.imagesPreview} id='containerPreviewImg'></div>
+            <input className={styles1.inputField} type="file" id="Upload" name='Upload' onChange={saveFile} />
+            <div className={styles1.fakeBtn}>Choose files</div>
+            <div className={styles1.msg}>or drag and drop files here</div>
+          </div>
+          <div className={styles1.fileDropArea}>
+            <div className={styles1.imagesPreview} id='containerPreviewImgBank'></div>
+            <input className={styles1.inputField} type="file" id="UploadBank" name='UploadBank' onChange={saveFileBank} />
+            <div className={styles1.fakeBtn}>Choose files</div>
+            <div className={styles1.msg}>or drag and drop files here</div>
+      </div>
+      {/* <div className={styles1.UploadImg}>
       
         <label htmlFor="Upload" className="form-label">รูปบัตรประชาชน</label>
         <input className="form-control" type="file" id="Upload" name='Upload' onChange={saveFile}></input>
@@ -135,7 +146,7 @@ export default function userKyc() {
         <label htmlFor="UploadBank" className="form-label">รูปหน้าบัญชีธนาคาร</label>
         <input className="form-control" type="file" id="UploadBank" name='UploadBank'onChange={saveFileBank} ></input>
         <div className={styles1.containerPreview} id='containerPreviewImgBank'></div>
-      </div>
+      </div> */}
       </div>
       <div className={styles1.kyc__container__form}>
       

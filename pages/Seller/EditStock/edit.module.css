@@ -1,12 +1,12 @@
 
 /* Form&Email */
 
-.kyc__container__form form  {
+.edit__container__form form  {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    margin-left: 50%;
-    text-align:center;
+    gap: 2.5rem;
+   
+    
     width: auto;
     height: auto;
     padding: 2rem;
@@ -15,58 +15,57 @@
   }
   
   
-  .kyc__container .UploadImg {
+  .edit__container .UploadImg {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
     margin-top: 3rem;
-    margin-left: 5rem;
+    margin-left: 3rem;
     
-    /* margin-right: 50%; */
+    margin-right: 35%;
   }
-  .kyc__container .UploadImg img{
+  .edit__container .UploadImg img{
     /* margin-left: 4.5rem; */
 
-    width: 350px;
-    height: 200px;
+    display: none;
     border: none;
   }
   
-  .kyc__container h3 {
+  .edit__container h3 {
     text-align: center;
     color: #000
   }
-  .kyc__container p {
+  .edit__container p {
       text-align: center;
       color: #000;
       
     }
-    .kyc__container p span {
+    .edit__container p span {
       text-align: center;
       color: #F9AF23;
       
     }
-  .kyc__container__Upload {
+  .edit__container__Upload {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
     text-align:center;
     float: left;
-    width: 35%;
+    width: 40%;
   }
   /* .UploadImg{
     display: none;
     text-align:center;
   }
    */
-  .kyc__container {
+  .edit__container {
     text-align: auto;
     color: #000;
     
 
   }
   
-  .kyc__container button {
+  .edit__container button {
     width: 100%;
     height: 3rem;
     right: 125px;
@@ -77,20 +76,20 @@
   }
  
   
-  .kyc__container h1 {
+  .edit__container h1 {
     text-align: center;
     color: black;
     margin-bottom: 1.5rem;
   }
   
-  .kyc__container{
+  .edit__container{
     margin-left: 15rem;
     margin-top: 5rem;
     background: #E4E4E4 ;
     padding: 2rem 5rem;
     border-radius: 2rem;
     /* border-style: groove  ; */
-    
+    display: n;
     border-color: #333333;
     height: 55rem;
     width: 90rem;
@@ -160,8 +159,11 @@
     margin-top: 2.5rem;
    }
   
-  
-   /* =========== [ file drop area ] =============== */
+   .ck {
+    min-height: 500px;
+}
+ 
+  /* =========== [ file drop area ] =============== */
   .fileDropArea {
     position: relative;
     margin-top: 2rem;
@@ -225,6 +227,4 @@
 }
 
 /* ========================================= */
-  
-   
   
