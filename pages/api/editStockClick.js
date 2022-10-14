@@ -1,7 +1,7 @@
 
  export default async function handler(req, res) {
     var MongoClient = require('mongodb').MongoClient;
-    const  { productName , price, type, category, detail,imgProduct,imgProduct2,imgProduct3} = req.body
+    const  { productName , price, amount, type, category, detail,imgProduct,imgProduct2,imgProduct3} = req.body
 
     var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
 
@@ -9,7 +9,8 @@
       if (err) throw err;
       let dbo =   db.db("Ject_Jobe");
       let myobj =  { productName: req.body.productName , 
-         price : req.body.price , 
+         price : req.body.price ,
+         amount : req.body.amount , 
          type : req.body.type , 
          category : req.body.category,
          detail: req.body.detail,

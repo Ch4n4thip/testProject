@@ -18,7 +18,7 @@ export default function EditStock() {
   const [Product2, setProduct2] = useState('')
   const [Product3, setProduct3] = useState('')
   const [inputData, setInputData] = useState()
-
+  const [category, setCategory] = useState('')
   const saveFile = (e) => {
     setFile(e.target.files[0])
 
@@ -64,7 +64,7 @@ export default function EditStock() {
     })
     reader.readAsDataURL(a.target.files[0])
   }
-
+ 
 
   const upload = async (e) => {
     e.preventDefault()
@@ -100,13 +100,15 @@ export default function EditStock() {
       const imgURLProduct2 = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/EditStock/' + 'Product2/' + imgNameProduct2
       const imgURLProduct3 = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/EditStock/' + 'Product3/' + imgNameProduct3
       const detail = CKEDITOR.instances.detail.getData();
+      console.log(category)
       console.log(detail)
         await axios.post( axiosURL , {
             
           productName: inputData.productName,
           price: inputData.price,
+          amount: inputData.amount,
           type: inputData.type,
-          category:  myData,
+          category: category,
           detail: detail ,
           img: imgURL,
           imgProduct2: imgURLProduct2,
@@ -142,6 +144,9 @@ export default function EditStock() {
         return {...prev, [name]: value}
       })
     }
+    const onCategoryChange = (ev) => {
+      setCategory(ev.value);
+  }
 // =================================== Multiple Select ============================================
       setOptions({
         locale: localeTh,
@@ -149,26 +154,28 @@ export default function EditStock() {
         themeVariant: 'light'
       });    
     const myData = [
-        { text: 'เลือกทั้งหมด', value: 1 },
-      { text: 'กระเป๋า', value: 2 },
-      { text: 'กล้องและอุปกรณ์ถ่ายภาพ', value: 3 },
-      { text: 'กีฬาและกิจกรรมกลางแจ้ง', value: 4 },
-      { text: 'ของเล่น สินค้าแม่และเด็ก', value: 5 },
-      { text: 'ความงามและของใช้ส่วนตัว', value: 6 },
-      { text: 'คอมพิวเตอร์และแล็ปท็อป', value: 7 },
-      { text: 'นาฬิกาและแว่นตา', value: 8 },
-      { text: 'มือถือและอุปกรณ์เสริม', value: 9 },
-      { text: 'ยานยนต์', value: 10 },
-      { text: 'รองเท้าผู้ชาย/ผู้หญิง', value: 11 },
-      { text: 'สัตว์เลี้ยง', value: 12 },
-      { text: 'สื่อบันเทิงภายในบ้าน', value: 13 },
-      { text: 'อาหารเครื่องดื่มและผลิตภัณฑ์สุขภาพ', value: 14 },
-      { text: 'เกมและอุปกรณ์เสริม', value: 15 },
-      { text: 'เครื่องประดับ', value: 16 },
-      { text: 'เครื่องเขียน หนังสือ และ ดนตรี', value: 17 },
-      { text: 'เครื่องใช้ภายในบ้าน', value: 18 },
-      { text: 'เสื้อผ้าผู้ชาย/ผู้หญิง', value: 19 },
+        { text: 'เลือกทั้งหมด', value: 'all' },
+      { text: 'กระเป๋า', value: 'bag' },
+      { text: 'กล้องและอุปกรณ์ถ่ายภาพ', value: 'camera' },
+      { text: 'กีฬาและกิจกรรมกลางแจ้ง', value: 'sport' },
+      { text: 'ของเล่น สินค้าแม่และเด็ก', value: 'toys' },
+      { text: 'ความงามและของใช้ส่วนตัว', value: 'beauty' },
+      { text: 'คอมพิวเตอร์และแล็ปท็อป', value: 'computer' },
+      { text: 'นาฬิกาและแว่นตา', value: 'watch' },
+      { text: 'มือถือและอุปกรณ์เสริม', value: 'mobile' },
+      { text: 'ยานยนต์', value: 'car' },
+      { text: 'รองเท้าผู้ชาย/ผู้หญิง', value: 'shoes' },
+      { text: 'สัตว์เลี้ยง', value: 'pet' },
+      { text: 'สื่อบันเทิงภายในบ้าน', value: 'entertainment' },
+      { text: 'อาหารเครื่องดื่มและผลิตภัณฑ์สุขภาพ', value: 'food' },
+      { text: 'เกมและอุปกรณ์เสริม', value: 'game' },
+      { text: 'เครื่องประดับ', value: 'jewelry' },
+      { text: 'เครื่องเขียน หนังสือ และ ดนตรี', value: 'stationery' },
+      { text: 'เครื่องใช้ภายในบ้าน', value: 'home' },
+      { text: 'เสื้อผ้าผู้ชาย/ผู้หญิง', value: 'clothes' },
     ];
+    
+    const myDefault = 'all';
     return (
         <>
       <Navbar/>
@@ -177,19 +184,19 @@ export default function EditStock() {
       <div className={styles1.edit__container__Upload}>
       <div className={styles1.fileDropArea}>
             <div className={styles1.imagesPreview} id='containerPreviewImg'></div>
-            <input className={styles1.inputField} type="file" name='file' onChange={saveFile} />
+            <input className={styles1.inputField} type="file" name='file' accept="image/*" onChange={saveFile} />
             <div className={styles1.fakeBtn}>Choose files</div>
             <div className={styles1.msg}>or drag and drop files here</div>
             <div className={styles1.msg}>Image Product No.1</div>
           </div>
           <div className={styles1.UploadImg}>
         <label htmlFor="Upload" className="form-label">Image Product No.2</label>
-        <input className="form-control" type="file" id="UploadProduct2" name='UploadProduct2' onChange={saveFileProduct2}></input>
+        <input className="form-control" type="file" id="UploadProduct2" name='UploadProduct2' accept="image/*" onChange={saveFileProduct2}></input>
         <div className={styles1.containerPreview} id='containerPreviewProduct2'></div>
       </div>
       <div className={styles1.UploadImg}>
         <label htmlFor="Upload" className="form-label">Image Product No.3</label>
-        <input className="form-control" type="file" id="UploadProduct3" name='UploadProduct3' onChange={saveFileProduct3}></input>
+        <input className="form-control" type="file" id="UploadProduct3" name='UploadProduct3' accept="image/*" onChange={saveFileProduct3}></input>
         <div className={styles1.containerPreview} id='containerPreviewProduct3'></div>
       </div>
       </div>
@@ -199,54 +206,23 @@ export default function EditStock() {
             
           <form action="" className={styles1.form} onSubmit={upload}>
               <input placeholder="ชื่อสินค้า" type="text" className={styles1.input} name="productName" id="productName" required="" onChange={(e) => onChangeHandler(e.target)}/>
+              <div className={styles1.col}>
               <input placeholder="ราคา" type="text" className={styles1.input} name="price" id="price" required="" onChange={(e) => onChangeHandler(e.target)} />
+              <input placeholder="จำนวน" type="number" className={styles1.input} name="amount" id="amount" required="" onChange={(e) => onChangeHandler(e.target)} />
+              </div>
               <input placeholder="ประเภท" type="text" className={styles1.input} name="type" id="type" required="" onChange={(e) => onChangeHandler(e.target)} />
-              <div onChange={(e) => {onChangeHandler(e.target)}}>
-              <Select
+              <div >
               
-                multiple={true}
-            data={myData}
-            filter={true}
-            
-            inputProps={{
-                label: 'หมวดหมู่',
-                labelStyle: 'stacked',
-                // inputStyle: 'outline',
-                placeholder: 'โปรดเลือกหมวดหมู่',
-                required: true,
-            }}
-            onCancel = {(event, inst) => {
-                // Logic for cancel button click
-                
-            }}
-            onChange = {(event, inst,e) => {
-                // Logic for value change
-                
-            }}
-            
-            onClose = {(event, inst) => {
-                // Your custom event handler goes here
-            }}
-            onDestroy = {(event, inst) => {
-                // Your custom event handler goes here 
-            }}
-            onFilter = {(event, inst) => {
-                // Your custom event handler goes here 
-            }}
-            onInit = {(event, inst) => {
-                // Logic running on component init
-            }}
-            onOpen = {(event, inst) => {
-                // Your custom event handler goes here 
-            }}
-            onPosition = {(event, inst) => {
-                // Logic for component positioning
-            }}
-            onTempChange = {(event, inst)=> {
-                // Logic for temporary value change
-            }}
-            
-        />
+
+          <Select
+          // name="category"
+          // id="category"
+              data={myData}
+              defaultSelection={myDefault}
+              placeholder="เลือกหมวดหมู่สินค้า"
+              onChange={onCategoryChange}
+              // value={Category}
+          />
         </div>
             <div >
               <h4>รายละเอียดสินค้า</h4>

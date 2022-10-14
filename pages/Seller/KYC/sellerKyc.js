@@ -125,13 +125,13 @@ export default function userKyc() {
       <div className={styles1.kyc__container__Upload}>
       <div className={styles1.fileDropArea}>
             <div className={styles1.imagesPreview} id='containerPreviewImg'></div>
-            <input className={styles1.inputField} type="file" id="Upload" name='Upload' onChange={saveFile} />
+            <input className={styles1.inputField} type="file" id="Upload" name='Upload' accept="image/*" onChange={saveFile} />
             <div className={styles1.fakeBtn}>Choose files</div>
             <div className={styles1.msg}>or drag and drop files here</div>
           </div>
           <div className={styles1.fileDropArea}>
             <div className={styles1.imagesPreview} id='containerPreviewImgBank'></div>
-            <input className={styles1.inputField} type="file" id="UploadBank" name='UploadBank' onChange={saveFileBank} />
+            <input className={styles1.inputField} type="file" id="UploadBank" name='UploadBank' accept="image/*" onChange={saveFileBank} />
             <div className={styles1.fakeBtn}>Choose files</div>
             <div className={styles1.msg}>or drag and drop files here</div>
       </div>
