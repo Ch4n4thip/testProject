@@ -3,6 +3,7 @@ import Image from 'next/image'
 import logo from "../../img/Png 250.png"
 import styles1 from './Navbar.module.css'
 export default function Navbar() {
+ 
     return (
         
       <nav className={styles1.NavbarItem}>

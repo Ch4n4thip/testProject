@@ -10,12 +10,16 @@ import { useRouter } from 'next/router'
 import { send } from "process";
 import { BsSegmentedNav } from "react-icons/bs";
 import Swal from 'sweetalert2'
+import { useDispatch } from "react-redux";
+import { increment } from "../../slices/counterSlice";
+
 
 
 
 
 export default function Login() {
   const router = useRouter();
+  const dispatch = useDispatch();
   function LoginClick() {
     const url = 'http://localhost:3000/api/loginClick'
     const EmailCheck = document.querySelector('#Email').value
@@ -33,9 +37,11 @@ export default function Login() {
         showConfirmButton: false,
         timer: 1500
       })
-      router.push('/')
+        dispatch(increment(response.data.payload))
+        console.log(response.data.payload)
+      //router.push('/')
 
-      console.log(response.data)
+     console.log(response.data)
     }).catch((error) => {
       Swal.fire({
         position: 'center',
@@ -44,7 +50,7 @@ export default function Login() {
         showConfirmButton: false,
         timer: 1500
       })
-      console.log(error.response.data)
+      //console.log(error.response.data)
     })
 
   }

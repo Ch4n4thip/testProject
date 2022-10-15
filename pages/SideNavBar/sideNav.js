@@ -16,7 +16,7 @@ const sideNav = () => {
       <a href='' onClick={()=>setActive('#about')} className={activeNav === '#about' ? 'active' : ''} ><GrCart/></a>   
       <a href=''  onClick={()=>setActive('#exp')} className={activeNav === '#exp' ? 'active' : ''} ><RiCoupon2Line/></a>    
       <a href=''   onClick={()=>setActive('#services')} className={activeNav === '#services' ? 'active' : ''} ><RiScales3Line/></a>      
-      <a href=''  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><BiCommentDetail/></a>
+      <a href='../Chat/Pages/_app'  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><BiCommentDetail/></a>
       <a href=''  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><AiOutlineHistory/></a>
       <a href=''  onClick={()=>setActive('#contact')} className={activeNav === '#contact' ? 'active' : ''} ><FiFilter/></a>
     </nav>

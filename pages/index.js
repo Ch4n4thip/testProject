@@ -5,9 +5,12 @@ import Navbar from '../Components/Navbar/nav'
 import SideBar from './SideNavBar/sideNav'
 import { BsCart2 } from 'react-icons/bs';
 import Link from 'next/link';
-import Foot from "./Footer/Footer"
+import Foot from "./Footer/Footer";
+
+
 
 export default function index() {
+ 
 
   return (
     <div >
@@ -19,6 +22,7 @@ export default function index() {
 
       <Navbar/>
       <SideBar/>
+
         <div className={styles1.card}>
           <div className={styles1.card_img}></div>
             <div className={styles1.card_info}>
