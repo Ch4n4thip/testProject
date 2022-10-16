@@ -14,7 +14,11 @@ export default async function handler(req, res) {
       user: {
         email: CheckM.email,
         name: CheckM.name,
-        role: CheckM.role
+        role: CheckM.role,
+        tel: CheckM.Tel,
+        birthdate: CheckM.birthdate ,
+        gender: CheckM.gender,
+        address: CheckM.Address
       }
     }
   
