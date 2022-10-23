@@ -21,14 +21,15 @@ export default async function handler(req, res) {
         address: CheckM.Address
       }
     }
-  
-  console.log(CheckM)
-  console.log(password)
+
+  //console.log(CheckM)
+  //console.log(password)
     if (CheckM) {
       
       
       if (CheckM.password == password) {
         //res.status(200).send({message: "Success"})
+
         jwt.sign(
           payload , "logmail" , { expiresIn : 3600 } , ( err, token) => {
             if(err) { throw err ; }
@@ -36,7 +37,7 @@ export default async function handler(req, res) {
           }
 
         )
-        console.log(payload)
+      //  console.log(payload)
         
       }
       else { res.status(400).send({message: "Email or password incorrect"}) }

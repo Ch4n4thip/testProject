@@ -5,11 +5,48 @@ import Foot from '../Footer/Footer'
 import Popup from 'reactjs-popup'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { useEffect , useState } from 'react'
+
 
 
 
 export default function Profile() {
  const router = useRouter();
+ const [ name , setName ] = useState("");
+ const [ email , setEmail ] = useState("");
+ const [ role , setRole ] = useState("");
+ const [ tel , setTel ] = useState("");
+ const [ birthdate , setBirthDate ] = useState("");
+ const [ gender , setGender ] = useState("");
+ const [ address , setAddress ] = useState("");
+
+ const [ status , setStatus ] = useState("notOk");
+
+
+ useEffect(() => {
+  if( localStorage.getItem("Email")){ setStatus("Ok")}
+},[] ); 
+
+  
+ useEffect(() => {
+  if( localStorage.getItem("Email")){ 
+    setName(localStorage.getItem("Name"))
+    setEmail(localStorage.getItem("Email"))
+    setRole(localStorage.getItem("Role"))
+    setTel(localStorage.getItem("Tel"))
+    setBirthDate(localStorage.getItem("BirthDate"))
+    setGender(localStorage.getItem("Gender"))
+    setAddress(localStorage.getItem("Address"))
+  }
+},[] );
+
+
+
+ 
+  function goToIndex(){
+    router.push('/')
+  }
+
   function EditProClick(){
     const url = 'http://localhost:3000/api/editProfileClick'
     const NewName = document.querySelector('#newName').value
@@ -24,7 +61,7 @@ export default function Profile() {
       gender: NewGender
 
     }).then((response) => {
-      router.push('../Profile/Profile')
+      router.push('./Profile')
       
       console.log(response.data)
     }).catch((error) => {
@@ -40,13 +77,15 @@ export default function Profile() {
     axios.post(url,{
       Address: NewAddress
     }).then((response) => {
-
+      router.push('./Profile')
     }).catch((error) => {
 
     })
   }
- 
+
+  if(status === "Ok"){
   return (
+    
     <>
     <Navbar/>
     <SideNav/>
@@ -55,10 +94,10 @@ export default function Profile() {
             <h1>Picture</h1>
         </div>
         <div className={Styles1.Container__Me__In}>
-            <h1>ชื่อผู้ใช้ :</h1>
-            <h1>อีเมล :</h1>
-            <h1>วัน/เดือน/ปี เกิด :</h1>
-            <h1>เพศ :</h1>
+            <p>ชื่อผู้ใช้ : {name}</p>
+            <p>อีเมล : {email}</p>
+            <p>ว/ด/ป เกิด  : {birthdate}</p>
+            <p>เพศ : {gender}</p>
             
         </div>
         <div className={Styles1.Container__Me__In}>
@@ -96,9 +135,18 @@ export default function Profile() {
             </div>  
           </Popup>
         </div>
+        <h1>{address}</h1>
     </div>
     <Foot/>
     </> 
  
   )
+}else {
+  return (
+    <div className={Styles1.ErrorPage}>
+       <h1>กลับสู่หน้าหลัก</h1>
+       <button type='submit' className='btn btn-primary' onMouseDown={()=> { goToIndex()} }>OK</button> 
+    </div>
+  )
+}
 }
