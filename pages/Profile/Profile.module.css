@@ -11,6 +11,7 @@
     margin-right:20%;
     text-align: center;
     gap: 5rem;
+    
 }
 .Container__Info{
     display: grid;
@@ -137,4 +138,9 @@
     border-radius: 28px; 
     color: white;
     font-size: 20px;
+}
+
+.ErrorPage{
+    text-align: center;
+    margin-top: 20%;
 }

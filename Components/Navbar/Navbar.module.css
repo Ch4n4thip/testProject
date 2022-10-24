@@ -405,29 +405,16 @@
 
 }
 
-/* ------------------------------------------------
-[ Extra small device (smaller then iPhone SE) ] */
-@media screen and (max-width: 356px){
-    /* ------------------------------------------------
-    [ Brand ] */
-    .brand {
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-    }
-    .brand .brandName {
-        opacity: 0;
-        visibility: hidden;
-        display: none;
-    }
-    .brand .mainToggle {
-        padding: 0 20px;
-        opacity: 1;
-        visibility: visible;
-        display: inline-flex;
-        align-items: center;
-        cursor: pointer;
-    }
+.btn button{
+    
+    width: 150px;
+    height: 50px;
+    right: 100px;
+    top: 25px;
+    background-color: #F9AF23;
+    border-radius: 28px;
+}
+
 
     /* ------------------------------------------------
     [ Main ] */
@@ -536,4 +523,3 @@
         transition: transform ease 0.25s;
     }
 
-}

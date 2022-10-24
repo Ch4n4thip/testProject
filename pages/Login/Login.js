@@ -10,12 +10,16 @@ import { useRouter } from 'next/router'
 import { send } from "process";
 import { BsSegmentedNav } from "react-icons/bs";
 import Swal from 'sweetalert2'
+import { useDispatch } from "react-redux";
+import { increment } from "../../slices/counterSlice";
+
 
 
 
 
 export default function Login() {
   const router = useRouter();
+  const dispatch = useDispatch();
   function LoginClick() {
     const url = 'http://localhost:3000/api/loginClick'
     const EmailCheck = document.querySelector('#Email').value
@@ -26,16 +30,55 @@ export default function Login() {
       password: PassCheck
 
     }).then((response) => {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Logged In Welcome',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      router.push('/')
+      
+        dispatch(increment(response.data.payload))
+        let email =  response.data.payload.user.email
+        let name =  response.data.payload.user.name
+        let role =  response.data.payload.user.role
+        let tel =  response.data.payload.user.tel
+        let birthdate =  response.data.payload.user.birthdate
+        let gender =  response.data.payload.user.gender
+        let address =  response.data.payload.user.address
 
-      console.log(response.data)
+        let email_serialized = JSON.stringify(email);
+        let name_serialized = JSON.stringify(name);
+        let role_serialized = JSON.stringify(role);
+        let tel_serialized = JSON.stringify(tel);
+        let birthdate_serialized = JSON.stringify(birthdate);
+        let gender_serialized = JSON.stringify(gender);
+        let address_serialized = JSON.stringify(address);
+       
+        localStorage.setItem("Email" , email_serialized);
+        localStorage.setItem("Name" , name_serialized);
+        localStorage.setItem("Role" , role_serialized);
+        localStorage.setItem("Tel" , tel_serialized);
+        localStorage.setItem("BirthDate" , birthdate_serialized);
+        localStorage.setItem("Gender" , gender_serialized);
+        localStorage.setItem("Address" , address_serialized);
+
+        let email_deserialized = JSON.parse(localStorage.getItem("Email"));
+        let name_deserialized = JSON.parse(localStorage.getItem("Name"));
+        let role_deserialized = JSON.parse(localStorage.getItem("Role"));
+        let tel_deserialized = JSON.parse(localStorage.getItem("Tel"));
+        let birthdate_deserialized = JSON.parse(localStorage.getItem("BirthDate"));
+        let gender_deserialized = JSON.parse(localStorage.getItem("Gender"));
+        let address_deserialized = JSON.parse(localStorage.getItem("Address"));
+        //console.log(a_deserialized);
+       // console.log("Email = " + email);
+
+        
+        Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Logged In Welcome',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
+        //console.log(response.data.payload)
+        router.push('/')
+
+     console.log(response.data)
     }).catch((error) => {
       Swal.fire({
         position: 'center',
@@ -44,7 +87,7 @@ export default function Login() {
         showConfirmButton: false,
         timer: 1500
       })
-      console.log(error.response.data)
+      //console.log(error.response.data)
     })
 
   }
