@@ -6,73 +6,45 @@ import Footer from "../../Footer/Footer"
 import axios from 'axios';
 import Navbar from '../../../Components/Navbar/nav';
 import Swal from 'sweetalert2'
-import {Router, useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import { CKEditor } from 'ckeditor4-react';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 import { Select, Page, setOptions, localeTh } from '@mobiscroll/react';
-
-export default function EditStock() {
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Head from 'next/head'
+import { FreeMode, Mousewheel, Pagination } from "swiper"
+export default function addProduct() {
     // ==================================== Upload ============================================
 
-  const [file, setFile] = useState('')
-  const [Product2, setProduct2] = useState('')
-  const [Product3, setProduct3] = useState('')
+  const [file, setFile] = useState([])
+  const [previewImg, setPreviewImg] = useState()
   const [inputData, setInputData] = useState()
   const [category, setCategory] = useState('')
+  const router = useRouter();
   const saveFile = (e) => {
-    setFile(e.target.files[0])
-
-    // reset preview div
-    document.getElementById('containerPreviewImg').innerHTML = ""
-    var reader = new FileReader()
-    reader.addEventListener('loadend', function() {
-      var image = new Image()
-      image.title  = e.target.files[0].name
-      image.src    = this.result
-      image.id     = 'img-1'
-      document.querySelector('#containerPreviewImg').appendChild(image)
-    })
-    reader.readAsDataURL(e.target.files[0])
-  }
-  const saveFileProduct2 = (a) => {
-    setProduct2(a.target.files[0])
-
-    // reset preview div
-    document.getElementById('containerPreviewProduct2').innerHTML = ""
-    var reader = new FileReader()
-    reader.addEventListener('loadend', function() {
-      var image = new Image()
-      image.title  = a.target.files[0].name
-      image.src    = this.result
-      image.id     = 'img-2'
-      document.querySelector('#containerPreviewProduct2').appendChild(image)
-    })
-    reader.readAsDataURL(a.target.files[0])
-  }
-  const saveFileProduct3 = (a) => {
-    setProduct3(a.target.files[0])
-
-    // reset preview div
-    document.getElementById('containerPreviewProduct3').innerHTML = ""
-    var reader = new FileReader()
-    reader.addEventListener('loadend', function() {
-      var image = new Image()
-      image.title  = a.target.files[0].name
-      image.src    = this.result
-      image.id     = 'img-3'
-      document.querySelector('#containerPreviewProduct3').appendChild(image)
-    })
-    reader.readAsDataURL(a.target.files[0])
-  }
- 
+    
+    
+    if (parseInt(e.target.files.length) > 3) {
+      alert(`เลือกได้ไม่เกิน ${3}ไฟล์`)
+      }
+    else{
+      setFile([...e.target.files])
+      setPreviewImg(e.target.files[0])}
+}
+  
 
   const upload = async (e) => {
     e.preventDefault()
     console.log(file)
     try{
-      const imgName = Date.now() + '-' + file?.name?.replaceAll(' ','-')
-      const imgNameProduct2 = Date.now() + '-' + Product2?.name?.replaceAll(' ','-')
-      const imgNameProduct3 = Date.now() + '-' + Product3?.name?.replaceAll(' ','-')
+      const myPromise = new Promise( async (resolve, reject) => {
+        const listImgURL = []
+        // [ Upload image ]
+        file.forEach( async element => {
+          
+      const imgName = category + '-' + Date.now() + '-' + element.name?.replaceAll(' ','-')
+      const imgURL = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + 'Product/'  + imgName
+      listImgURL.push(imgURL)
       const parallelUploads3 = new Upload({
         client: new S3Client({
           region: "ap-southeast-1",
@@ -83,10 +55,8 @@ export default function EditStock() {
         })|| new S3Client({}),
         params: { 
           Bucket: "jectjobe",
-          Key: 'EditStock/' + 'Product1' + imgName,
-          Key: 'EditStock/' + 'Product2/' + imgNameProduct2,
-          Key: 'EditStock/' + 'Product3/' + imgNameProduct3,
-          Body: file
+          Key: 'Product/' + imgName,
+          Body: element
         },
         partSize: 1024 * 1024 * 5, // optional size of each part, in bytes, at least 10MB
         leavePartsOnError: false, // optional manually handle dropped parts
@@ -95,10 +65,12 @@ export default function EditStock() {
         console.log(progress);
       });
       await parallelUploads3.done()
-      const axiosURL = 'http://localhost:3000/api/editStockClick'
-      const imgURL = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/EditStock/' + 'Product1/' + imgName
-      const imgURLProduct2 = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/EditStock/' + 'Product2/' + imgNameProduct2
-      const imgURLProduct3 = "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + '/EditStock/' + 'Product3/' + imgNameProduct3
+    })
+      
+      
+      
+      const axiosURL = 'http://localhost:3000/api/addProductClick'
+      
       const detail = CKEDITOR.instances.detail.getData();
       console.log(category)
       console.log(detail)
@@ -110,9 +82,7 @@ export default function EditStock() {
           type: inputData.type,
           category: category,
           detail: detail ,
-          img: imgURL,
-          imgProduct2: imgURLProduct2,
-          imgProduct3: imgURLProduct3
+          img: listImgURL,
         }).then( res => {
           Swal.fire({
             position: 'center',
@@ -122,6 +92,7 @@ export default function EditStock() {
             timer: 1500
           })
           console.log(res.data)
+          router.push('/Seller/Shop')
         }).catch( err => {
           Swal.fire({
             position: 'center',
@@ -133,7 +104,7 @@ export default function EditStock() {
           console.log(err.response.data)
         })
       
-      
+      })  
     }catch (e){
       console.log(e);
     }
@@ -178,27 +149,53 @@ export default function EditStock() {
     const myDefault = 'all';
     return (
         <>
+        <Head>
+                <title>Ject Jobe</title>
+                <meta name="description" content="Generated by create next app" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
       <Navbar/>
       
       <div className={styles1.edit__container}> 
       <div className={styles1.edit__container__Upload}>
       <div className={styles1.fileDropArea}>
-            <div className={styles1.imagesPreview} id='containerPreviewImg'></div>
-            <input className={styles1.inputField} type="file" name='file' accept="image/*" onChange={saveFile} />
+        <p className={styles1.alert}>*จำกัดอัปโหลดไม่เกิน 3 รูปเท่านั้น</p>
+            <div className={styles1.imagesPreview} id='containerPreviewImg'>
+            { previewImg && <img src={URL.createObjectURL(previewImg)} id='pre-img'/> }
+            </div>
+            <input className={styles1.inputField} type="file" name='file' accept="image/*"  multiple  onChange={saveFile} />
             <div className={styles1.fakeBtn}>Choose files</div>
             <div className={styles1.msg}>or drag and drop files here</div>
             <div className={styles1.msg}>Image Product No.1</div>
+            <div className={styles1.listImages}>
+              <Swiper
+                  slidesPerView={3}
+                  spaceBetween={0}
+                  freeMode={true}
+                  mousewheel={true}
+                  pagination={{
+                    clickable: true,
+                  }}
+                  modules={[FreeMode, Mousewheel, Pagination]}
+                  className="listImage"
+                >
+                {
+                  
+                  file.map( (element, index) => {
+                    
+                    return (
+                      <SwiperSlide key={`list-img-${index}`}>
+                        <div className={styles1.image}>
+                          <img src={URL.createObjectURL(element)} onClick={ e => setPreviewImg(element) }/>
+                        </div>
+                      </SwiperSlide>
+                    )
+                  })
+                }
+              </Swiper>
+            </div>
           </div>
-          <div className={styles1.UploadImg}>
-        <label htmlFor="Upload" className="form-label">Image Product No.2</label>
-        <input className="form-control" type="file" id="UploadProduct2" name='UploadProduct2' accept="image/*" onChange={saveFileProduct2}></input>
-        <div className={styles1.containerPreview} id='containerPreviewProduct2'></div>
-      </div>
-      <div className={styles1.UploadImg}>
-        <label htmlFor="Upload" className="form-label">Image Product No.3</label>
-        <input className="form-control" type="file" id="UploadProduct3" name='UploadProduct3' accept="image/*" onChange={saveFileProduct3}></input>
-        <div className={styles1.containerPreview} id='containerPreviewProduct3'></div>
-      </div>
+          
       </div>
       
       <div className={styles1.edit__container__form}>
@@ -210,7 +207,7 @@ export default function EditStock() {
               <input placeholder="ราคา" type="text" className={styles1.input} name="price" id="price" required="" onChange={(e) => onChangeHandler(e.target)} />
               <input placeholder="จำนวน" type="number" className={styles1.input} name="amount" id="amount" required="" onChange={(e) => onChangeHandler(e.target)} />
               </div>
-              <input placeholder="ประเภท" type="text" className={styles1.input} name="type" id="type" required="" onChange={(e) => onChangeHandler(e.target)} />
+              
               <div >
               
 
@@ -247,4 +244,3 @@ export default function EditStock() {
         </>
 )
 }
-

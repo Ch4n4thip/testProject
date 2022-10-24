@@ -6,8 +6,8 @@ export default function Navbar() {
     return (
         
       <nav className={styles1.NavbarItem}>
-        <section className={styles1.Logo}>
-        <Link href="Home">
+        <div className={styles1.Logo}>
+        <Link href="/">
             <Image 
                 alt="Home"
                 src={logo}
@@ -17,17 +17,20 @@ export default function Navbar() {
                 height={145}
             />
         </Link>
-        </section>
-        <section className="flex justify-end p-5">
+        
+        </div>
+        <div className={styles1.Search}>
+            <input type="text" placeholder=" ค้นหา"/></div>
+        <div className="flex justify-end p-5">
         <div className={styles1.btn}>
             <Link href="/Login/Login"><p>Login</p></Link>
         </div>
-        </section>
+       
+        </div>
         {/* <Link href="Log" className="btn">
             Login
         </Link> */}
-        <div className={styles1.Search}>
-            <input type="text" placeholder=" ค้นหา"/></div>
+        
         {/* <Image src={logo} className="Logo" alt="Logo"/> */}
         {/* <Link href="/"></Link> */}
           
