@@ -28,3 +28,37 @@
     background: var(--color-primary);
     color:var(--color-bg);
 }
+
+/* ----- From Here is Responsive ----- */
+
+
+/* ----- SmartPhone ----- */
+@media screen and (max-width : 767px) {
+
+} 
+
+
+/* ----- Mobile ----- */
+@media screen and (max-width : 600px) {
+    
+}
+
+/* ----- Tablet ----- */
+@media screen and (min-width : 767px) and (max-width : 1023px) {
+    
+}
+
+/* ----- Laptop ----- */
+@media screen and (max-width : 992px) {
+    
+}
+
+/* ----- Desktop ----- */
+@media screen and (min-width : 1024px) {
+    
+}
+
+/* ----- Large Screen ----- */
+@media screen and (max-width : 1200px) {
+    
+}   

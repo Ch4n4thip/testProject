@@ -10,30 +10,42 @@
     height: 100px;
     margin-bottom: 1.5rem;
 }
+
+.NavbarItem input{
+    position: absolute;
+    
+    width: 20%;
+    height: 45px;  
+    top: 25px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+
 .Logo{
-        
+    display: grid;
+    grid-template-columns: 1fr 3.5fr;  
     clear: left;
     align-items: center;
     font-size: 36px;
     padding: 0 10px;
     height: 100px;
-    margin-top: -1.25rem;
+    margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
-.NavbarItem input{
-    position: absolute;
-    width: 65%;
-    height: 40px;
-    left: 256px;
-    top: 25px;
-    font-size: 25px;
+.Menu {
+    display: grid;
+    grid-template-columns: 150px 150px 200px;
 }
+
 /* .NavbarItem Image {
     width: 145;
     height: 145;
     margin-top: 100px;
     margin-left: 29px;
 } */
+
+
 .btn{
     position: absolute;
     width: 150px;
@@ -48,6 +60,7 @@
     font-size: 25px;
     text-align: center;
     margin-top: 8px;
+    
 }
 
 .btn button{
@@ -58,7 +71,121 @@
     top: 25px;
     background-color: #F9AF23;
     border-radius: 28px;
+    
 }
 
 
+.btn__logOut button{
+        
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        right: 100px;
+        top: 25px;
+        background-color: #F9AF23;
+        border-radius: 28px;
+        font-size: 80%;
+       
+   
+}
+.Sub_Menu{
+    color: white;
+}
+
+/* ----- DropDown ----- */
+
+
+
+
+/* ----- From Here is Responsive ----- */
+
+
+/* ----- SmartPhone ----- */
+@media screen and (max-width : 767px) {
+    .btn{
+        position: absolute;
+        width: 30%;
+        height: 8%;
+        right: 20px;
+        top: 25px;
+        background-color: #F9AF23;
+        border-radius: 14px;
+        font-size: 75%;
+        
+    }
+    .btn p{
+        font-size: 25px;
+        text-align: center;
+        margin-top: 8px;
+        
+    }
     
+    .btn button{
+        
+        width: 150px;
+        height: 50px;
+        right: 100px;
+        top: 25px;
+        background-color: #F9AF23;
+        border-radius: 28px;
+        
+    }
+    
+    
+    .btn__logOut button{
+            
+            position: absolute;
+            width: 30%;
+            height: 8%;
+            right: 20px;
+            top: 25px;
+            background-color: #F9AF23;
+            border-radius: 14px;
+            font-size: 75%;
+           
+       
+    }
+    .NavbarItem input{
+        height: 8%;
+        margin-bottom: 1rem;
+        width: 50%;
+    }
+
+    .Logo{
+        display : none ;
+    }
+} 
+
+
+/* ----- Mobile ----- */
+@media screen and (max-width : 600px) {
+    
+
+    .Logo{
+        display : none ;
+    }
+}
+
+/* ----- Tablet ----- */
+@media screen and (min-width : 767px) and (max-width : 1023px) {
+    
+
+    .Logo{
+        display : none ;
+    }
+}
+
+/* ----- Laptop ----- */
+@media screen and (max-width : 992px) {
+    
+}
+
+/* ----- Desktop ----- */
+@media screen and (min-width : 1024px) {
+    
+}
+
+/* ----- Large Screen ----- */
+@media screen and (max-width : 1200px) {
+    
+}   
