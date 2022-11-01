@@ -1,3 +1,6 @@
+
+
+
 .container {
 
     flex-direction: row;
@@ -170,6 +173,9 @@
 .profile_header_img .profile_header_info {
     margin-left: 140px
 }
+.profile_header_info{
+    display: inline-block;
+}
 .profile_content {
     padding: 25px;
     border-radius: 4px
@@ -180,4 +186,20 @@
     content: '';
     display: table;
     clear: both
+}
+.imagesButton{
+    margin-left: 1.5rem;
+    
+}
+
+.ButtonCss{
+    display: inline;
+    float: right;
+    margin-left: 1.5rem;
+    margin-top: -2rem;
+}
+.CssInline{
+    display: inline-block;
+    margin-left: 1.5rem;
+    margin-bottom: 2rem;
 }

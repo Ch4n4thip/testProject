@@ -14,7 +14,7 @@ export default function userKyc() {
   const [file, setFile] = useState([])
   const [previewImg, setPreviewImg] = useState()
   const [inputData, setInputData] = useState()
-  const [ email , setEmail ] = useState("");
+  const [ email , setEmail ] = useState();
   const [ status , setStatus ] = useState("notOk");
   const router = useRouter();
   useEffect(() => {
