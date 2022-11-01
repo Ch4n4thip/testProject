@@ -2,15 +2,13 @@
 /* Form&Email */
 
 .kyc__container__form form  {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-left: 50%;
-    text-align:center;
-    width: auto;
-    height: auto;
-    padding: 2rem;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: auto;
+  height: auto;
+  padding: 2rem;
+  margin-bottom: 2rem;
     
   }
   
@@ -24,28 +22,8 @@
     
     /* margin-right: 50%; */
   }
-  .kyc__container .UploadImg img{
-    /* margin-left: 4.5rem; */
 
-    width: 350px;
-    height: 200px;
-    border: none;
-  }
-  
-  .kyc__container h3 {
-    text-align: center;
-    color: #000
-  }
-  .kyc__container p {
-      text-align: center;
-      color: #000;
-      
-    }
-    .kyc__container p span {
-      text-align: center;
-      color: #F9AF23;
-      
-    }
+
   .kyc__container__Upload {
     display: flex;
     flex-direction: column;
@@ -59,13 +37,7 @@
     text-align:center;
   }
    */
-  .kyc__container {
-    text-align: auto;
-    color: #000;
-    
 
-  }
-  
   .kyc__container button {
     width: 100%;
     height: 3rem;
@@ -77,23 +49,16 @@
   }
  
   
-  .kyc__container h1 {
-    text-align: center;
-    color: black;
-    margin-bottom: 1.5rem;
-  }
-  
+
   .kyc__container{
-    margin-left: 15rem;
-    margin-top: 5rem;
-    background: #E4E4E4 ;
-    padding: 2rem 5rem;
-    border-radius: 2rem;
-    /* border-style: groove  ; */
-    
+   
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+    background: #E4E4E4;
     border-color: #333333;
-    height: 55rem;
-    width: 90rem;
+    height: auto;
+    width: 100%;
     margin-bottom: 4rem;
     /* box-shadow: 5px 10px #C0C0C0; */
     box-shadow:
@@ -103,7 +68,10 @@
     7.9px 26.7px 11.8px rgba(0, 0, 0, 0.066),
     15.7px 53.2px 18.8px rgba(0, 0, 0, 0.062),
     37px 125px 40px rgba(0, 0, 0, 0.07);
+    background: #E4E4E4 ;
   }
+
+
   /* Password */
   .input {
     line-height: 28px;
@@ -162,22 +130,26 @@
   
   
    /* =========== [ file drop area ] =============== */
-  .fileDropArea {
+   .fileDropArea {
     position: relative;
     margin-top: 2rem;
-    margin-left: 3.5rem;
+    margin-left: 5.5rem;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 280px;
-    height: 350px;
+    width: 350px;
+    height: 280px;
     max-width: 100%;
     padding: 25px;
     border: 1px dashed rgba(0, 0, 0, 0.4);
     border-radius: 5px;
 }
-
+.fileDropArea p{
+  margin-top: 1rem;
+  color: red;
+  font-size: 14px;
+}
 .imagesPreview {
     position: absolute;
     width: calc(100% - 50px);
@@ -193,6 +165,7 @@
     height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 3px;
+    transition: transform 0.3s;
 }
 
 .inputField {
@@ -209,7 +182,8 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 3px;
     padding: 8px 15px;
-    margin-right: 10px;
+    margin-right:5px;
+    margin-top: 3.5rem;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -219,12 +193,450 @@
     font-weight: 300;
     line-height: 1.4;
     white-space: nowrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-overflow: ellipsis;
     margin-top: 10px;
 }
-
+.listImages {
+  padding-top: 5px;
+  height: 120px;
+  width: 100%;
+}
+.listImages .image{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  
+}
+.listImages .image img{
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 120px;
+  margin-left:-10rem ;
+  margin-top: -23rem;
+  
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+.text{
+  font-size: 14px;
+}
 /* ========================================= */
   
-   
+.ErrorPage{
+  text-align: center;
+  display: block;
+  margin: 20%;
+}
+@media screen and (min-width: 1700px) and (max-width: 1900px) {
+  .kyc__container {
+    display: block;
+    margin: auto;
+    width: 90%;
+  }
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    width: 59%;
+    
+  }
+  .kyc__container__Upload {
+    margin-left: 4rem;
+    float: left;
+    width: 30%;
+  }
+  .fileDropArea{
+    margin-left: 2rem;
+  }
+  .text{
+    margin-left: -5.5rem;
+  }
+}
+@media screen and (max-width: 1700px) {
+  .kyc__container {
+    display: block;
+    margin: auto;
+    width: 90%;
+  }
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 49%;
+    
+  }
+  .kyc__container__Upload {
+    margin-left: 4rem;
+    float: left;
+    width: 40%;
+  }
+  
+}
+/* @media screen and (max-width: 1200px) {
+  .kyc__container {
+    display: block;
+    margin: auto;
+    width: 90%;
+  }
+  .kyc__container__Upload {
+    float: left;
+    margin-left: 4rem;
+    width: 50%;
+  }
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 55%;
+    
+  }
+  
+  .fileDropArea input {
+      width: 420px;
+      margin: 7 0 0px;
+  }
+} */
+@media screen and (max-width: 1200px) {
+  .kyc__container {
+    display: block;
+    margin: auto;
+    width: 90%;
+  }
+ 
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    
+  }
+  
+  .fileDropArea {
+    margin-left: 20vw;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+}
+  .listImages .image img{
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 70px;
+    margin-left:-9rem ;
+    margin-top: -29rem;
+  }
+  .text{
+    margin-left: 7rem;
+    width: 100%;
+  }
+  
+}
+@media screen and (max-width: 786px) {
+  .kyc__container {
+    display: block;
+    flex-direction: column;
+    min-height: 100%; 
+    min-width: 100%; 
+  }
+ 
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    
+  }
+  
+ .fileDropArea {
+    margin-left: 15vw;
+    width: 280px;
+    height: 300px;
+}
+.fakeBtn{
+  
+  margin-top: .5rem;
+}
+
+.imagesPreview {
+  position: absolute;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagesPreview img{
+  position: relative;
+  width: auto;
+  height: 100%;
+}
+
+.listImages .image{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  
+}
+
+.listImages .image img{
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 120px;
+  margin-left:-8rem ;
+  margin-top: -20rem;
+}
+.text{
+  margin-left: 5rem;
+  width: 100%;
+}
+
+
+}
+@media screen and (max-width: 577px) {
+  .kyc__container {
+    display: block;
+    flex-direction: column;
+  }
+ 
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    
+  }
+  
+ .fileDropArea {
+    margin-left: 15vw;
+    width: 100%;
+    height: 200px;
+    max-width: 100%;
+}
+.inputField {
+  position: absolute;
+  width: 300;
+  height: calc(100% - 78px);
+  opacity: 0;
+  cursor: pointer;
+}
+.fileDropArea p{
+  display: none;
+}
+
+.fakeBtn{
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-right:5px;
+  margin-top: 1.5rem;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+
+.imagesPreview {
+  position: absolute;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagesPreview img{
+  position: relative;
+  width: auto;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.listImages {
+  padding-top: 5px;
+  height: 50px;
+  width: 100%;
+}
+.listImages .image{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  
+}
+.listImages .image img{
+  height: auto;
+  width: auto;
+  max-width: 150%;
+  max-height: 200px;
+  margin-left:-7rem ;
+  margin-top: -17rem;
+}
+.text{
+  margin-left: 4rem;
+  width: 120%;
+  font-size: 12px;
+}
+
+
+}
+@media screen and (max-width: 414px) {
+  .kyc__container {
+    display: block;
+    flex-direction: column;
+  }
+ 
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    
+  }
+  
+ .fileDropArea {
+    margin-left: 12vw;
+    width: 120%;
+    height: 200px;
+    max-width: 120%;
+}
+.inputField {
+  position: absolute;
+  width: 120%;
+  height: calc(100% - 78px);
+  opacity: 0;
+  cursor: pointer;
+}
+.fileDropArea p{
+  display: none;
+}
+
+.fakeBtn{
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-right:5px;
+  margin-top: -0.5rem;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+
+.imagesPreview {
+  position: absolute;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagesPreview img{
+  position: relative;
+  width: auto;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.listImages {
+  padding-top: 5px;
+  height: 50px;
+  width: 100%;
+}
+.listImages .image{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  
+}
+.listImages .image img{
+  height: auto;
+  width: auto;
+  max-width: 150%;
+  max-height: 200px;
+  margin-left:-7rem ;
+  margin-top: -17rem;
+}
+.text{
+  margin-left: 1rem;
+  width: 140%;
+  font-size: 12px;
+}
+
+}
+@media screen and (max-width: 280px) {
+  .kyc__container {
+    display: block;
+    flex-direction: column;
+  }
+ 
+  .kyc__container__form form  {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    
+  }
+  
+ .fileDropArea {
+    margin-left: 12vw;
+    width: 135%;
+    height: 200px;
+    max-width: 135%;
+}
+.inputField {
+  position: absolute;
+  width: 120%;
+  height: calc(100% - 78px);
+  opacity: 0;
+  cursor: pointer;
+}
+.fileDropArea p{
+  display: none;
+}
+
+
+.listImages {
+  padding-top: 5px;
+  height: 50px;
+  width: 100%;
+}
+.listImages .image{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  
+}
+.listImages .image img{
+  height: auto;
+  width: auto;
+  max-width: 150%;
+  max-height: 200px;
+  margin-left:-6rem ;
+  margin-top: -17rem;
+}
+
+.text{
+  margin-left: 1rem;
+  width: 140%;
+  font-size: 10px;
+}
+}
   

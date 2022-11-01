@@ -8,14 +8,20 @@ import { useEffect , useState } from 'react'
 import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
 
+
 export default function Navbar() {
     const router = useRouter();
     const [ status , setStatus] = useState("NOTOK");
+    const [ path , setPath] = useState("");
+
 
     function toLogOutClick() {
         localStorage.clear();
-        window.location.reload(false);
+        
+        if(path === "/"){ window.location.reload(false); }
+        
         router.push('/');
+        
         Swal.fire({
             position: 'center',
                 icon: 'success',
@@ -24,6 +30,11 @@ export default function Navbar() {
                 timer: 1500
           })
     }
+    useEffect(()=>{
+        const pathname = window.location.pathname
+        setPath(pathname)
+        console.log(pathname)
+    },[]);
 
     useEffect(() => {
         if( localStorage.getItem("Email")){ setStatus("OK")}
@@ -32,10 +43,12 @@ export default function Navbar() {
 
       if(status === "OK"){
         return (
+        
             
         <nav className={styles1.NavbarItem}>
+            
             <section className={styles1.Logo}>
-            <Link href="Home">
+            <Link href="/">
                 <Image 
                     alt="Home"
                     src={logo}
@@ -45,24 +58,42 @@ export default function Navbar() {
                     height={145}
                 />
             </Link>
+            <div className={styles1.Menu}>
+                <div className={styles1.Sub_Menu}>
+                <Link href="#"><h3>เกี่ยวกับเรา</h3></Link>
+                </div>
+                <div className={styles1.Sub_Menu}>
+                <Link href="#"><h3>โปรโมชั่น</h3></Link>
+                </div>
+                <div className={styles1.Sub_Menu}>
+                <Link href="/Seller/KYC/sellerKyc"><h3>Seller Centre</h3></Link> {/* Have a problem */}
+                </div>
+            </div>
+            
+            
+
             </section>
-            <section className="flex justify-end p-5">
-            <div className={styles1.btn}>
-            <button type='submit' onClick={() => { toLogOutClick() }}>LogOut</button>
+            
+            <div className={styles1.Search}>
+                    <input type="text" placeholder=" ค้นหา"/></div>
+                
+                {/* <Image src={logo} className="Logo" alt="Logo"/> */}
+                {/* <Link href="/"></Link> */} 
+
+            <section >
+            <div className={styles1.btn__logOut}>
+            <button type='submit' onClick={() => { toLogOutClick() }} ><p>LogOut</p></button>
             </div>
             </section>
             {/* <Link href="Log" className="btn">
                 Login
             </Link> */}
-            <div className={styles1.Search}>
-                <input type="text" placeholder=" ค้นหา"/></div>
-            {/* <Image src={logo} className="Logo" alt="Logo"/> */}
-            {/* <Link href="/"></Link> */}        
+                   
         </nav>
     )}
     if(status === "NOTOK"){
         return (
-            
+        
         <nav className={styles1.NavbarItem}>
             <section className={styles1.Logo}>
             <Link href="Home">
@@ -75,8 +106,14 @@ export default function Navbar() {
                     height={145}
                 />
             </Link>
-            </section>
-            <section className="flex justify-end p-5">
+            </section> 
+            
+            <div className={styles1.Search}>
+                <input type="text" placeholder=" ค้นหา"/></div>
+            {/* <Image src={logo} className="Logo" alt="Logo"/> */}
+            {/* <Link href="/"></Link> */}
+           
+            <section className="flex justify-end p-5">             
             <div className={styles1.btn}>
                 <Link href="/Login/Login"><p>Login</p></Link>
             </div>
@@ -84,10 +121,7 @@ export default function Navbar() {
             {/* <Link href="Log" className="btn">
                 Login
             </Link> */}
-            <div className={styles1.Search}>
-                <input type="text" placeholder=" ค้นหา"/></div>
-            {/* <Image src={logo} className="Logo" alt="Logo"/> */}
-            {/* <Link href="/"></Link> */}        
+                   
         </nav>
     )}
 
