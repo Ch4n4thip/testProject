@@ -27,6 +27,10 @@ export default function Profile() {
   if( localStorage.getItem("Email")){ setStatus("Ok")}
 },[] ); 
 
+useEffect(() => {
+ axios.get
+},[] ); 
+
   
  useEffect(() => {
   if( localStorage.getItem("Email")){ 
@@ -49,19 +53,21 @@ export default function Profile() {
 
   function EditProClick(){
     const url = 'http://localhost:3000/api/editProfileClick'
+    const Email = email
     const NewName = document.querySelector('#newName').value
     const NewDate = document.querySelector('#newBirthDate').value
     const NewTel = document.querySelector('#newTel').value
     const NewGender = document.querySelector('#newGender').value    
    
     axios.post(url, {
+      Email: Email ,
       name: NewName,
       date: NewDate,
       tel: NewTel,
       gender: NewGender
 
     }).then((response) => {
-      router.push('./Profile')
+      window.location.reload(false)
       
       console.log(response.data)
     }).catch((error) => {

@@ -1,22 +1,18 @@
 
 export default async function handler(req, res) {
     var MongoClient = require('mongodb').MongoClient;
-    const { name, date , tel , gender } = req.body
+    const { Email , name, date , tel , gender } = req.body
     var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
   
     MongoClient.connect(url, async function (err, db) {
       if (err) throw err;
-      const dbo = db.db("Ject_Jobe");
-      const CheckM = await dbo.collection("User").findOne({},{
-        _id:0,
-        email:1,
-        name:0,
-        password:0,
-        birthdate:0,
-        role:0,gender:0,Tel:0,Address:0})
+      var dbo = db.db("Ject_Jobe");
+      var CheckM = await dbo.collection("User").findOne( { email : Email } ) 
+
+      console.log(Email)
       console.log(CheckM)
-      const newValue = { $set: { name:name , birthdate : date , Tel : tel , gender : gender}};
-      if (CheckM != null) {
+      var newValue = { $set: { name:name , birthdate : date , Tel : tel , gender : gender}};
+      if (CheckM) {
             dbo.collection("User").updateOne(CheckM,newValue )
             res.status(200).send({message: "Changed Your info"})   
       }else { 

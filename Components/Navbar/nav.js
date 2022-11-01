@@ -66,21 +66,20 @@ export default function Navbar() {
                 <Link href="#"><h3>โปรโมชั่น</h3></Link>
                 </div>
                 <div className={styles1.Sub_Menu}>
-                <Link href="/Seller/KYC/sellerKyc"><h3>Seller Centre</h3></Link> {/* Have a problem */}
+                <Link href="../../pages/Seller/KYC/sellerKyc"><h3>Seller Centre</h3></Link> {/* Have a problem */}
                 </div>
             </div>
-            
             
 
             </section>
             
-            <div className={styles1.Search}>
+
+                <div className={styles1.Search}>
                     <input type="text" placeholder=" ค้นหา"/></div>
-                
                 {/* <Image src={logo} className="Logo" alt="Logo"/> */}
                 {/* <Link href="/"></Link> */} 
 
-            <section >
+            <section className="flex justify-end p-5">
             <div className={styles1.btn__logOut}>
             <button type='submit' onClick={() => { toLogOutClick() }} ><p>LogOut</p></button>
             </div>
