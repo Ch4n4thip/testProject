@@ -62,7 +62,7 @@ const uploadProfile = async (e) => {
     const myPromise = new Promise(async (resolve, reject) => {
       // [ Upload image ]
       
-      const imgName = Date.now() + "-" + file.name.replaceAll(" ", "-");
+      const imgName = Date.now() + "-" + file?.name.replaceAll(" ", "-");
       const parallelUploads3 = new Upload({
         client: new S3Client({
           region: "ap-southeast-1",
@@ -87,7 +87,7 @@ const uploadProfile = async (e) => {
       const NewDate = document.querySelector('#newBirthDate').value
       const NewTel = document.querySelector('#newTel').value
       const NewGender = document.querySelector('#newGender').value  
-      const axiosURL = "http://localhost:3000/api/getUser";
+      const axiosURL = "http://localhost:3000/api/editProfileClick";
       const imgURL =
         "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" +
         "ProfileUser/" +
@@ -226,53 +226,14 @@ useEffect(() => {
                             );
                           })}
             
-        </div>
-        <div className={Styles1.Container__Me__In}>
-          <Popup trigger={<button>แก้ไข</button>} position="left center" >
-            <div className={Styles1.Popup__container}>
-              <form action='./Profile' method="" className={Styles1.form}>
-                <input type="text" id='newName' placeholder=' โปรดใส่ชื่อใหม่' required/>
-                <input type="date" id='newBirthDate' placeholder=' โปรดใส่วันที่เกิด' required/>
-                <input type="tel"  id="newTel" placeholder='โปรดใส่หมายเลขโทรศัพท์'  required/>
-                <div className={Styles1.form__gender}>
-                  <label for="newGender" className={Styles1.gender}>เพศ : </label>
-                  <select name="cars" id="newGender" className={Styles1.gender__select}>
-                    <option value="male" className={Styles1.gender__option}>ชาย</option>
-                    <option value="female" className={Styles1.gender__option}>หญิง</option>
-                    <option value="none" className={Styles1.gender__option}>ไม่ระบุ</option>
-                  </select>
-                </div>
-                <button type='submit' className='btn btn-primary' onMouseDown={()=> {EditProClick()} }>ยืนยัน</button> 
-              </form> 
-            </div>  
-          </Popup>
-        
-        <button>คูปองของฉัน</button>
-        </div>
-    </div>
-    <div className={Styles1.Container__Info}>
-        <h1>ที่อยู่ของฉัน</h1>
-        <div className={Styles1.Container__info__button}>
-        <Popup trigger={<button>เพิ่มที่อยู่</button>} position="left center" >
-            <div className={Styles1.Popup__container2}>
-              <form  action='./Profile' method="" className={Styles1.form}>
-                <input type="text" id='newAddress' placeholder=' โปรดใส่ที่อยู่' required/>
-                <button type='submit' className='btn btn-primary' onMouseDown={()=> {AddAddress()} }>ยืนยัน</button> 
-              </form> 
-            </div>  
-          </Popup>
-        </div>
-        <h1>{address}</h1>
-    </div>
-
-    <div className={Styles1.imagesButton}>
-                          {/* <a href="#" class="btn btn-sm btn-info text-white mb-2">Edit Profile</a> */}
-                          <button
+                             </div>
+                        <div className={Styles1.Container__Me__In}>
+                        <button
                             type="button"
                             class="btn btn-info "
                             onClick={() => setModalOpen(!modalOpen)}
                           >
-                            เลือกรูป
+                            แก้ไข
                           </button>
                           <Modal
                             toggle={() => setModalOpen(!modalOpen)}
@@ -283,7 +244,7 @@ useEffect(() => {
                                 className=" modal-title"
                                 id="exampleModalLabel"
                               >
-                                Upload Profile
+                                Update Profile
                               </h5>
                               <button
                                 aria-label="Close"
@@ -363,8 +324,73 @@ useEffect(() => {
                               </Button>
                             </ModalFooter>
                           </Modal>
-                        </div>   
-    
+                        
+                          <button>คูปองของฉัน</button>
+                          </div>
+                      </div>
+                      <div className={Styles1.Container__Info}>
+                          <h1>ที่อยู่ของฉัน</h1>
+                          <div className={Styles1.Container__info__button}>
+                          <button
+                            type="button"
+                            class="btn btn-info "
+                            onClick={() => setModalOpen(!modalOpen)}
+                          >
+                            เพิ่มที่อยู่
+                          </button>
+                          <Modal
+                            toggle={() => setModalOpen(!modalOpen)}
+                            isOpen={modalOpen}
+                          >
+                            <div className=" modal-header">
+                              <h5
+                                className=" modal-title"
+                                id="exampleModalLabel"
+                              >
+                                Add Address
+                              </h5>
+                              <button
+                                aria-label="Close"
+                                className=" close"
+                                type="button"
+                                onClick={() => setModalOpen(!modalOpen)}
+                              >
+                                <span aria-hidden={true}>×</span>
+                              </button>
+                            </div>
+                            <ModalBody>
+                                        
+                              {/* edit from here */}
+                              <div className={Styles1.In__popup}>
+                            <form action='./Profile' method="" className={Styles1.form}>
+                            <input type="text" id='newAddress' placeholder=' โปรดใส่ที่อยู่' required/>
+                            <button type='submit' className='btn btn-primary' onMouseDown={()=> {AddAddress()} }>ยืนยัน</button> 
+                              
+                            </form> 
+                             </div>  
+                             
+                             {/* edit end  here */}
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button
+                                color="secondary"
+                                type="button"
+                                onClick={() => setModalOpen(!modalOpen)}
+                              >
+                                Close
+                              </Button>
+                              <Button
+                                color="primary"
+                                type="button"
+                                onClick={(e) => uploadProfile(e)}
+                              >
+                                Save changes
+                              </Button>
+                            </ModalFooter>
+                          </Modal>
+        </div>
+        <h1>{address}</h1>
+    </div>   
     <Foot/>
     </> 
  
