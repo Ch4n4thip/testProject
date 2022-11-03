@@ -10,14 +10,24 @@ import { FiChevronLeft,FiChevronRight } from 'react-icons/fi'
 import Head from 'next/head'
 import avatar from '../../../img/avatar3.png'
 import 'bootstrap/dist/css/bootstrap.css'
+import Pro from "../../../img/avatar3.png";
 export default function ProductPage(){
     const [ listProduct, setListProduct ] = useState([])
     const [ allProduct, setAllProduct ] = useState([])
     const [ currentPage, setCurrentPage ] = useState(1)
     const [ Max_Product_Per_Page, setMax_Product_Per_Page ] = useState(10)
     const [ maxPage, setMaxPage ] = useState(0)
-
+    const [email, setEmail] = useState();
+    const [ dataChange, setDataChange ] = useState(0)
+    const [listProfile, setListProfile] = useState([]);
+    const [userProfile, setUserProfile] = useState([]);
+    useEffect(() => {
+        if (localStorage.getItem("Email")) {
+          
+          setEmail(localStorage.getItem("Email"));
     
+        }
+      }, []);  
    
     const getListProduct = async () => {
         const axiosURL = 'http://localhost:3000/api/allProduct'
@@ -68,10 +78,66 @@ export default function ProductPage(){
         }
         setListProduct(arr)
         Router.push({
-            pathname: '/Seller/Shop',
-            query: { page: currentPage },
+            pathname: '/Seller/Shop' ,
+            query:   {page: currentPage } ,
         })
     }, [currentPage, maxPage])
+    const getListProfile = async () => {
+        const URL =
+          "http://localhost:3000/api/userSeller?Email=" +
+          localStorage.getItem("Email");
+        await axios
+          .get(URL)
+          .then((result) => {
+            console.log(result);
+            setListProfile(result.data);
+          })
+          .catch((err) => {
+            // Localhost ios issus
+            console.log(err);
+            axios
+              .get("/api/userSeller")
+              .then((result) => {
+                // setListProfile( result.data )
+                console.log(result.data);
+                setListProfile(result.data);
+              })
+              .catch((err) => {
+                setListProfile([{ img: "", Email: err.message }]);
+              });
+          });
+      };
+      useEffect(() => {
+        getListProfile();
+      }, []);
+      const getUserProfile = async () => {
+        const URL =
+          "http://localhost:3000/api/kycClick?Email=" +
+          localStorage.getItem("Email");
+        await axios
+          .get(URL)
+          .then((result) => {
+            console.log(result);
+            setUserProfile([result.data]);
+          })
+          .catch((err) => {
+            // Localhost ios issus
+            console.log(err);
+            axios
+              .get("/api/kycClick")
+              .then((result) => {
+                // setUserProfile( result.data )
+                console.log([result.data]);
+                setUserProfile([result.data]);
+              })
+              .catch((err) => {
+                setUserProfile([{ img: "", Email: err.message }]);
+              });
+          });
+      };
+      useEffect(() => {
+        getUserProfile();
+      }, []);
     
     return (
         
@@ -83,6 +149,7 @@ export default function ProductPage(){
             </Head>
             <Navbar/>
         <div className={styles.container}>
+        <div className={styles.contentContainer}>
             <div className={styles.row}>
                 <div className={styles.col}>
                     <div id="content" className={styles.content}>
@@ -91,16 +158,53 @@ export default function ProductPage(){
                             <div className={styles.profile_header_cover}></div>
                             <div className={styles.profile_header_content}>
                                 <div className={styles.profile_header_img}>
-                                <div className={styles.ImageProfile}>
-                                    <Image src={avatar} alt="" />
+                                {(userProfile[0] === undefined) && 
+                           
+                           <div>
+                             <Image
+                               src={Pro}
+                               alt="Profile"
+                               objectFit="cover"
+                             />
+                           </div>
+                         }
+                         {userProfile[0] != undefined &&
+                           userProfile.map((element) => {
+                             console.log(element.img);
+                             return (
+                               <div className={styles.Image}>
+                                 <Image
+                                   src={element[0].img}
+                                   alt="Profile"
+                                   objectFit="cover"
+                                   width="105px"
+                                   height="109px"
+                                 />
+                                 
+                               </div>
+                               
+                             );
+                           })}
                                 </div>
-                                </div>
-                                <div className={styles.profile_header_info}>
-                                    <h4 class="m-t-10 m-b-5">Sean Ngu</h4>
-                                    <p class="m-b-10">UXUI + Frontend Developer</p>
-                                    <a href="#" class="btn btn-sm btn-info text-white mb-2">Edit Profile</a>
-                                </div>
+                                {userProfile[0] != undefined &&
+                          userProfile.map((element) => {
+                            console.log(element[0].fullName);
+                            return (
+                              <div className={styles.profile_header_info}>
+                                <h4 class="m-t-10 m-b-5">
+                                  ชื่อร้าน : {element[0].shopName}
+                                </h4>
+                                <p class="m-b-10">
+                                  สร้างเมื่อ : {element[0].addDate}
+                                </p>
+                                <p class="m-b-10">
+                                  Rate : 
+                                </p>
                                 
+                              </div>
+                            );
+                          })}
+                                </div>
                             </div>
                             </div>
                         </div>

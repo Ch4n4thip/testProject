@@ -17,6 +17,8 @@ export default function Profile() {
   const router = useRouter();
   const [email, setEmail] = useState();
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenTwo, setModalOpenTwo] = useState(false);
+  const [modalOpenThree, setModalOpenThree] = useState(false);
   const [status, setStatus] = useState("notOk");
   const [file, setFile] = useState("");
   const [listProfile, setListProfile] = useState([]);
@@ -292,18 +294,19 @@ export default function Profile() {
                           </Modal>
                         </div>
                         {/* </div> */}
-                        {/* <div className={styles1.ButtonCss}>
+                        {/* Setting */}
+                        <div className={styles1.ButtonCss}>
                          
                           <button
                             type="button"
                             class="btn btn-info "
-                            onClick={() => setModalOpen(!modalOpen)}
+                            onClick={() => setModalOpenTwo(!modalOpenTwo)}
                           >
                             ตั้งค่าเพิ่มเติม
                           </button>
                           <Modal
-                            toggle={() => setModalOpen(!modalOpen)}
-                            isOpen={modalOpen}
+                            toggle={() => setModalOpenTwo(!modalOpenTwo)}
+                            isOpen={modalOpenTwo}
                           >
                             <div className=" modal-header">
                               <h5
@@ -316,7 +319,7 @@ export default function Profile() {
                                 aria-label="Close"
                                 className=" close"
                                 type="button"
-                                onClick={() => setModalOpen(!modalOpen)}
+                                onClick={() => setModalOpenTwo(!modalOpenTwo)}
                               >
                                 <span aria-hidden={true}>×</span>
                               </button>
@@ -392,7 +395,7 @@ export default function Profile() {
                               <Button
                                 color="secondary"
                                 type="button"
-                                onClick={() => setModalOpen(!modalOpen)}
+                                onClick={() => setModalOpenTwo(!modalOpenTwo)}
                               >
                                 Close
                               </Button>
@@ -405,12 +408,80 @@ export default function Profile() {
                               </Button>
                             </ModalFooter>
                           </Modal>
-                        </div> */}
+                        </div>
+
+                        {/* Promotion */}
 
                         <div className={styles1.ButtonCss}>
-                          <Button color="info" type="button">
+                         
+                          <button
+                            type="button"
+                            class="btn btn-info "
+                            onClick={() => setModalOpenThree(!modalOpenThree)}
+                          >
                             สร้างโปรโมชั่น
-                          </Button>
+                          </button>
+                          <Modal
+                            toggle={() => setModalOpenThree(!modalOpenThree)}
+                            isOpen={modalOpenThree}
+                          >
+                            <div className=" modal-header">
+                              <h5
+                                className=" modal-title"
+                                id="exampleModalLabel"
+                              >
+                                สร้างโปรโมชั่น
+                              </h5>
+                              <button
+                                aria-label="Close"
+                                className=" close"
+                                type="button"
+                                onClick={() => setModalOpenThree(!modalOpenThree)}
+                              >
+                                <span aria-hidden={true}>×</span>
+                              </button>
+                            </div>
+                            <ModalBody>
+                              
+                              <div className={styles1.CssInline}>
+                              <p>วัน/เวลา</p>
+                              <input placeholder="วันเริ่ม" type="text" className={styles1.input} name="start" id="start" required />
+                              <input placeholder="วันสิ้นสุด" type="text" className={styles1.input} name="end" id="end" required />
+                                
+                              </div>
+
+                              
+                              <div className={styles1.CssInline}>
+                              <p >ราคา</p>
+                              <input placeholder="ลดราคา(%)" type="text" className={styles1.input} name="discount" id="discount" required />
+                              </div>
+                              <div className={styles1.CssInline}>
+                              <p>จำนวน</p>
+                              <input placeholder="1" type="number"  className={styles1.input} name="num" id="num" min="1" max="1000"  required />
+                              </div>
+                              
+                              <div className={styles1.CssInline}>
+                              <p>เงื่อนไข</p>
+                              <input placeholder="ราคาขั้นต่ำ" type="text" className={styles1.input} name="price" id="price" required />
+                              </div>
+                            </ModalBody>
+                            <ModalFooter>
+                              <Button
+                                color="secondary"
+                                type="button"
+                                onClick={() => setModalOpenThree(!modalOpenThree)}
+                              >
+                                Close
+                              </Button>
+                              <Button
+                                color="primary"
+                                type="button"
+                                onClick={(e) => uploadProfile(e)}
+                              >
+                                Save changes
+                              </Button>
+                            </ModalFooter>
+                          </Modal>
                         </div>
                       </div>
                     </div>
@@ -419,8 +490,32 @@ export default function Profile() {
               </div>
             </div>
           </div>
+          <div className={styles1.contentContainer}>
+          <div className={styles1.row}>
+                <div className={styles1.col}>
+                    <div id="content" className={styles1.content}>
+                        <div className={styles1.profile}>
+                        <div className={styles1.profile_header}>
+                            <div className={styles1.profile_header_cover}></div>
+                            <div className={styles1.profile_header_content}>
+                                <div className={styles1.profile_header_info}>
+                                    <div className={styles1.profile_header_info_inline}>
+                                    <h4 class="m-t-10 m-b-5">รายรับต่อเดือน</h4>
+                                    </div>
+                                    <div className={styles1.profile_header_info_inline}>
+                                    <h4 class="m-t-10 m-b-5">รายรับต่อปี</h4>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        </div>
         <Foot />
       </>
     );

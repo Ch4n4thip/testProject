@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         try {
 
           await dbo
-          .collection("ProfileSeller")
+          .collection("KYCSeller")
             .find({Email :getEmailModify})
             .toArray((err, result) => {
               if (err)
@@ -37,58 +37,7 @@ export default async function handler(req, res) {
       case "POST":
         console.log(EmailModify);
         try {
-
-          let myobj = {
-            Email: EmailModify,
-            img: req.body.img,
-            addDate: new Date().toLocaleDateString("th-TH", {
-              weekday: "long",
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            }),
-            lastDate: new Date().toLocaleDateString("th-TH", {
-              weekday: "long",
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            }),
-          };
-
-          var data = await dbo
-            .collection("ProfileSeller")
-            .find({ Email: EmailModify })
-            .toArray();
-
-          console.log(data);
-          var myquery = { Email: EmailModify };
-          var newvalues = {
-            $set: {
-              img: req.body.img,
-              lastDate: new Date().toLocaleDateString("th-TH", {
-                weekday: "long",
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              }),
-            },
-          };
-          // await dbo.collection('ProfileSeller')
-          //    .find({})
-          //    .project({
-          //       _id: 0,
-          //       Email: 1,
-          //       img: 1,
-          //       addDate: 1,
-          //       lastDate: 1,
-          //           }).toArray( (err, result) => {
-          //               if(err) res.status(400).send({ message: 'Cannot connect to database'})
-          //               res.send(result)
-          //               console.log(result);
-          //           })
-          console.log(data.length);
-          if (data.length > 0) {
-            dbo.collection("ProfileSeller").findOneAndUpdate(
+          await  dbo.collection("KYCSeller").findOneAndUpdate(
               { Email: EmailModify },
               {
                 $set: {
@@ -109,13 +58,7 @@ export default async function handler(req, res) {
                 res.send(result);
                 console.log("1 document updated");
               };
-          } else {
-            dbo
-              .collection("ProfileSeller")
-              .insertOne(myobj, function (err, response) {
-                console.log("Created Data");
-              });
-          }
+          
 
           console.log(EmailModify);
           res.status(200).send("success");
