@@ -152,13 +152,13 @@ export default function userKyc() {
       
             
           <form action="" className={styles1.form} onSubmit={upload}>
-              <input placeholder="ชื่อจริง-นามสกุล" type="text" className={styles1.input} name="fullName" id="fullName" required="" onChange={(e) => onChangeHandler(e.target)}/>
-              <input placeholder="ชื่อร้าน" type="text" className={styles1.input} name="shopName" id="shopName" required="" onChange={(e) => onChangeHandler(e.target)} />
-              <input placeholder="เลขบัตรประชาชน" type="text" className={styles1.input} name="cardPCC" id="cardCPP" required="" onChange={(e) => onChangeHandler(e.target)} />
-              <input placeholder="ธนาคาร" type="text" className={styles1.input} name="bankName" id="bankName" required="" onChange={(e) => onChangeHandler(e.target)} />
-              <input placeholder="เลขบัญชีธนาคาร" type="text" className={styles1.input} name="bookBank" id="bookBank" required="" onChange={(e) => onChangeHandler(e.target)} />
-              <input placeholder="เบอร์โทรศัพท์" type="text" className={styles1.input} name="phone" id="phone" required="" onChange={(e) => onChangeHandler(e.target)} />
-              <textarea placeholder="ที่อยู่ตามบัตรประชาชน" type="area" className={styles1.input} name="address" id="address" required="" onChange={(e) => onChangeHandler(e.target)} />
+              <input placeholder="ชื่อจริง-นามสกุล" type="text" className={styles1.input} name="fullName" id="fullName"  onChange={(e) => onChangeHandler(e.target)} required/>
+              <input placeholder="ชื่อร้าน" type="text" className={styles1.input} name="shopName" id="shopName" required onChange={(e) => onChangeHandler(e.target)} />
+              <input placeholder="เลขบัตรประชาชน" type="text" className={styles1.input} name="cardPCC" id="cardCPP" required onChange={(e) => onChangeHandler(e.target)} />
+              <input placeholder="ธนาคาร" type="text" className={styles1.input} name="bankName" id="bankName" required onChange={(e) => onChangeHandler(e.target)} />
+              <input placeholder="เลขบัญชีธนาคาร" type="text" className={styles1.input} name="bookBank" id="bookBank" required onChange={(e) => onChangeHandler(e.target)} />
+              <input placeholder="เบอร์โทรศัพท์" type="text" className={styles1.input} name="phone" id="phone" required onChange={(e) => onChangeHandler(e.target)} />
+              <textarea placeholder="ที่อยู่ตามบัตรประชาชน" type="area" className={styles1.input} name="address" id="address" required onChange={(e) => onChangeHandler(e.target)} />
 
               <div className={styles1.buttonForm}>
             <button type="submit">ยืนยัน</button>

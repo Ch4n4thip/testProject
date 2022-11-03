@@ -19,6 +19,7 @@ export default function Profile() {
  const [ birthdate , setBirthDate ] = useState("");
  const [ gender , setGender ] = useState("");
  const [ address , setAddress ] = useState("");
+ 
 
  const [ status , setStatus ] = useState("notOk");
 
@@ -74,6 +75,7 @@ useEffect(() => {
       router.push('./Profile')
       console.log(error.response.data)
     })
+    
   }
 
   function AddAddress(){
@@ -143,6 +145,7 @@ useEffect(() => {
         </div>
         <h1>{address}</h1>
     </div>
+    
     <Foot/>
     </> 
  

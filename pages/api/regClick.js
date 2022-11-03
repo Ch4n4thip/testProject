@@ -11,6 +11,8 @@ export default async function handler(req, res) {
       let dbo =   db.db("Ject_Jobe");
       let myobj =  { email: req.body.email , name : req.body.name , password : req.body.password , birthdate : req.body.birth_date , role : "M" , gender : "none" , 
                      Tel : "none" , Address : "none"}  
+      let emailForCart = { email : req.body.email }
+
       let CheckM = await dbo.collection("User").findOne( {email} ) 
       if(CheckM){ 
        // console.log("have it") }
@@ -21,9 +23,16 @@ export default async function handler(req, res) {
        dbo.collection("User").insertOne(myobj, function(err, res) {
           if (err) { throw err; }
           else {         
-          console.log("Created Data");             
+          console.log("Created Data at User");             
              }
-          });  
+          });
+      dbo.collection("Cart").insertOne( emailForCart, function(err, res) {
+          if (err) { throw err; }
+          else {         
+          console.log("Created Data at Cart");             
+             }
+         });
+        
          
           return res.status(200).send({message: "Data Created"})
         
