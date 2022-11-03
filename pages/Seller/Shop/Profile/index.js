@@ -159,27 +159,7 @@ export default function Profile() {
     router.push("/");
   }
 
-  // function EditProClick(){
-  //   const url = 'http://localhost:3000/api/editProfileClick'
-  //   const NewName = document.querySelector('#newName').value
-  //   const NewDate = document.querySelector('#newBirthDate').value
-  //   const NewTel = document.querySelector('#newTel').value
-  //   const NewGender = document.querySelector('#newGender').value
-
-  //   axios.post(url, {
-  //     name: NewName,
-  //     date: NewDate,
-
-  //   }).then((response) => {
-  //     router.push('./Profile')
-
-  //     console.log(response.data)
-  //   }).catch((error) => {
-  //     router.push('./Profile')
-  //     console.log(error.response.data)
-  //   })
-  // }
-
+  
   if (status === "Ok") {
     return (
       <>
