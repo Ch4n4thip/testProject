@@ -4,19 +4,20 @@ export default async function handler(req, res) {
     const { email , name, date , tel , gender , img } = req.body
     var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
     const query= req.query;
-   
-    const getEmailModify = query.email?.replaceAll('"', "");
+  //  console.log(req.body.email)
+   console.log(query.email)
+    const getEmailModify = query.Email?.replaceAll('"', "");
     MongoClient.connect(url, async function (err, db) {
-        var dbo = db.db("Ject_Jobe");
+        const dbo = db.db("Ject_Jobe");
         switch (req.method) {
       
             case "GET":
               
               try {
-      
+
                 await dbo
                 .collection("User")
-                  .find({Email :getEmailModify})
+                  .find({email :getEmailModify})
                   .toArray((err, result) => {
                     if (err)
                       res.status(400).send({ message: "Cannot connect to database" });

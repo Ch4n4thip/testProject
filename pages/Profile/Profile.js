@@ -9,15 +9,15 @@ import { useEffect , useState } from 'react'
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client, S3 } from "@aws-sdk/client-s3";
-
-
+import Pro from "../../img/avatar3.png";
+import Image from "next/image";
 
 
 
 export default function Profile() {
  const router = useRouter();
  const [ name , setName ] = useState("");
- const [ email , setEmail ] = useState("");
+ const [ emailLocal , setEmail ] = useState("");
  const [ role , setRole ] = useState("");
  const [ tel , setTel ] = useState("");
  const [ birthdate , setBirthDate ] = useState("");
@@ -57,7 +57,7 @@ const saveFile = (e) => {
 };
 const uploadProfile = async (e) => {
   e.preventDefault();
-  console.log(email);
+  console.log(emailLocal);
   try {
     const myPromise = new Promise(async (resolve, reject) => {
       // [ Upload image ]
@@ -87,14 +87,11 @@ const uploadProfile = async (e) => {
       const NewDate = document.querySelector('#newBirthDate').value
       const NewTel = document.querySelector('#newTel').value
       const NewGender = document.querySelector('#newGender').value  
-      const axiosURL = "http://localhost:3000/api/editProfileClick";
-      const imgURL =
-        "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" +
-        "ProfileUser/" +
-        imgName;
+      const axiosURL = "http://localhost:3000/api/getUser";
+      const imgURL ="https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + "ProfileUser/" + imgName;
       await axios
         .post(axiosURL, {
-          Email: email,
+          email: emailLocal,
           img: imgURL,
           name: NewName,
           date : NewDate,
@@ -117,15 +114,16 @@ const uploadProfile = async (e) => {
 };
 
 // Get Info User
+
 const getListProfile = async () => {
   const URL =
-    "http://localhost:3000/api/getUser?Email" +
+    "http://localhost:3000/api/getUser?Email=" +
     localStorage.getItem("Email");
   await axios
     .get(URL)
     .then((result) => {
       console.log(result);
-      setListProfile([result.data]);
+      setListProfile(result.data);
     })
     .catch((err) => {
       // Localhost ios issus
@@ -133,9 +131,9 @@ const getListProfile = async () => {
       axios
         .get("/api/getUser")
         .then((result) => {
-          // setListProfile( result.data )
+          // setUserProfile( result.data )
           console.log([result.data]);
-          setListProfile([result.data]);
+          setUserProfile([result.data]);
         })
         .catch((err) => {
           setListProfile([{ img: "", Email: err.message }]);
@@ -198,29 +196,56 @@ useEffect(() => {
     <Navbar/>
     <SideNav/>
     <div className={Styles1.Container__Me}>
-        <div className={Styles1.Container__Me__In}>
-            <h1>Picture</h1>
-        </div>
+    <div className={Styles1.Container__Me__In}>
+                          {(listProfile[0] === undefined) && 
+                           
+                            <div>
+                              <Image
+                                src={Pro}
+                                alt="Profile"
+                                objectFit="cover"
+                              />
+                            </div>
+                          }
+                          {listProfile[0] != undefined &&
+                            listProfile.map((element) => {
+                              console.log(element.img);
+                              return (
+                                <div className={Styles1.image}>
+                                  <Image
+                                    src={element.img}
+                                    alt="Profile"
+                                    objectFit="cover"
+                                    width="200px"
+                                    height="200px"
+                                  />
+                                </div>
+                              );
+                            })}
+                        </div>
+
         <div className={Styles1.Container__Me__In}>
         {listProfile[0] != undefined &&
                           listProfile.map((element) => {
                            // console.log(element.Email);
                             return (
+                              
                               <div className={Styles1.profile_header_info}>
+                                
                                 <h4 class="m-t-10 m-b-5">
-                                  อีเมล : {element[0]?.email}
+                                  อีเมล : {element.email}
                                 </h4>
                                 <p class="m-b-10">
-                                  ชื่อ : {element[0]?.name}
+                                  ชื่อ : {element.name}
                                 </p>
                                 <p class="m-b-10">
-                                  เบอร์โทรศัพท์ : {element[0]?.tel}
+                                  เบอร์โทรศัพท์ : {element.tel}
                                 </p>
                                 <p class="m-b-10">
-                                  เพศ : {element[0]?.gender}
+                                  เพศ : {element.gender}
                                 </p>
                                 <p class="m-b-10">
-                                  วันเกิด : {element[0]?.birthdate}
+                                  วันเกิด : {element.birthdate}
                                 </p>
                               </div>
                             );
@@ -393,8 +418,9 @@ useEffect(() => {
     </div>   
     <Foot/>
     </> 
- 
+  
   )
+  
 }else {
   return (
     <div className={Styles1.ErrorPage}>
