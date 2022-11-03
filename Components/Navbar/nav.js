@@ -70,13 +70,12 @@ export default function Navbar() {
                 <Link href="#"><h3>โปรโมชั่น</h3></Link>
                 </div>
                 <div className={styles1.Sub_Menu}>
-                <Link href="../Seller/KYC/sellerKyc"><h3>Seller Centre</h3></Link> {/* Have a problem */}
+                <Link href="/Seller/KYC/sellerKyc"><h3>Seller Centre</h3></Link> {/* Have a problem */}
                 </div>
             </div>
             
 
             </section>
-            
                 <div className={styles1.Search}>
                     <input type="text" placeholder=" ค้นหา"/></div>
                 {/* <Image src={logo} className="Logo" alt="Logo"/> */}

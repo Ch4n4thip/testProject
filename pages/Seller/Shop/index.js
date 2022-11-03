@@ -8,7 +8,8 @@ import Router from 'next/router'
 import Image from 'next/image'
 import { FiChevronLeft,FiChevronRight } from 'react-icons/fi'
 import Head from 'next/head'
-
+import avatar from '../../../img/avatar3.png'
+import 'bootstrap/dist/css/bootstrap.css'
 export default function ProductPage(){
     const [ listProduct, setListProduct ] = useState([])
     const [ allProduct, setAllProduct ] = useState([])
@@ -82,6 +83,31 @@ export default function ProductPage(){
             </Head>
             <Navbar/>
         <div className={styles.container}>
+            <div className={styles.row}>
+                <div className={styles.col}>
+                    <div id="content" className={styles.content}>
+                        <div className={styles.profile}>
+                        <div className={styles.profile_header}>
+                            <div className={styles.profile_header_cover}></div>
+                            <div className={styles.profile_header_content}>
+                                <div className={styles.profile_header_img}>
+                                <div className={styles.ImageProfile}>
+                                    <Image src={avatar} alt="" />
+                                </div>
+                                </div>
+                                <div className={styles.profile_header_info}>
+                                    <h4 class="m-t-10 m-b-5">Sean Ngu</h4>
+                                    <p class="m-b-10">UXUI + Frontend Developer</p>
+                                    <a href="#" class="btn btn-sm btn-info text-white mb-2">Edit Profile</a>
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             
             <div className={styles.contentContainer}>
                 <div className={styles.productWrap}>
@@ -128,6 +154,7 @@ export default function ProductPage(){
         
         </div>
         </div>
+        
     )
 
 }
