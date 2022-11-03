@@ -15,11 +15,7 @@ import { S3Client, S3 } from "@aws-sdk/client-s3";
 
 export default function Profile() {
   const router = useRouter();
-  const [name, setName] = useState("");
   const [email, setEmail] = useState();
-  const [role, setRole] = useState("");
-  const [tel, setTel] = useState("");
-  const [address, setAddress] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("notOk");
   const [file, setFile] = useState("");
@@ -90,7 +86,7 @@ export default function Profile() {
       .get(URL)
       .then((result) => {
         console.log(result);
-        setListProfile([result.data]);
+        setListProfile(result.data);
       })
       .catch((err) => {
         // Localhost ios issus
@@ -99,8 +95,8 @@ export default function Profile() {
           .get("/api/userSeller")
           .then((result) => {
             // setListProfile( result.data )
-            console.log([result.data]);
-            setListProfile([result.data]);
+            console.log(result.data);
+            setListProfile(result.data);
           })
           .catch((err) => {
             setListProfile([{ img: "", Email: err.message }]);
@@ -148,10 +144,9 @@ export default function Profile() {
 
   useEffect(() => {
     if (localStorage.getItem("Email")) {
-      setName(localStorage.getItem("Name"));
+      
       setEmail(localStorage.getItem("Email"));
-      setRole(localStorage.getItem("Role"));
-      setAddress(localStorage.getItem("Address"));
+
     }
   }, []);
 
@@ -195,7 +190,8 @@ export default function Profile() {
                       <div className={styles1.profile_header_cover}></div>
                       <div className={styles1.profile_header_content}>
                         <div className={styles1.profile_header_img}>
-                          {listProfile[0] === undefined && (
+                          {(listProfile[0] === undefined) && 
+                           
                             <div>
                               <Image
                                 src={Pro}
@@ -203,14 +199,14 @@ export default function Profile() {
                                 objectFit="cover"
                               />
                             </div>
-                          )}
+                          }
                           {listProfile[0] != undefined &&
                             listProfile.map((element) => {
-                              console.log(element[0].img);
+                              console.log(element.img);
                               return (
                                 <div className={styles1.image}>
                                   <Image
-                                    src={element[0].img}
+                                    src={element.img}
                                     alt="Profile"
                                     objectFit="cover"
                                     width="105px"
@@ -316,8 +312,8 @@ export default function Profile() {
                           </Modal>
                         </div>
                         {/* </div> */}
-                        <div className={styles1.ButtonCss}>
-                          {/* <a href="#" class="btn btn-sm btn-info text-white mb-2">Edit Profile</a> */}
+                        {/* <div className={styles1.ButtonCss}>
+                         
                           <button
                             type="button"
                             class="btn btn-info "
@@ -429,7 +425,7 @@ export default function Profile() {
                               </Button>
                             </ModalFooter>
                           </Modal>
-                        </div>
+                        </div> */}
 
                         <div className={styles1.ButtonCss}>
                           <Button color="info" type="button">

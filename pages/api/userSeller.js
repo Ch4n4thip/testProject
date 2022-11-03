@@ -5,8 +5,8 @@ export default async function handler(req, res) {
   const query= req.query;
   const EmailModify = Email?.replaceAll('"', "");
   const getEmailModify = query.Email?.replaceAll('"', "");
-  console.log(getEmailModify);
-  console.log(query);
+  console.log(EmailModify);
+  console.log(query.Email);
   MongoClient.connect(url, async function (err, db) {
     console.log(EmailModify=== Email);
         

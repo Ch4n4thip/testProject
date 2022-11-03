@@ -38,9 +38,9 @@
             .toArray((err, result) => {
               if (err)
                 res.status(400).send({ message: "Cannot connect to database" });
-                console.log(getEmailModify);
+                // console.log(getEmailModify);
               res.send(result);
-              console.log(result);
+              // console.log(result);
               
               console.log("Get Data Success");
             });
