@@ -239,7 +239,7 @@ useEffect(() => {
                                   ชื่อ : {element.name}
                                 </p>
                                 <p class="m-b-10">
-                                  เบอร์โทรศัพท์ : {element.tel}
+                                  เบอร์โทรศัพท์ : {element.Tel}
                                 </p>
                                 <p class="m-b-10">
                                   เพศ : {element.gender}
