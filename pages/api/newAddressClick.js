@@ -12,7 +12,7 @@
       var newValue = { $set: { Address : Address }};
       if (CheckM) {
         dbo.collection("User").updateOne(CheckM,newValue )
-        res.status(200).send({message: "Add ypur new address"})   
+        res.status(200).send({message: "Add your new address"})   
   } else { 
     return res.status(400).send({message: "Something Wrong"}) 
   }

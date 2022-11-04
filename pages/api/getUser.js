@@ -2,8 +2,12 @@
 export default async function handler(req, res) {
     var MongoClient = require('mongodb').MongoClient;
     const { email , name, date , tel , gender , img } = req.body
+    
     var url = "mongodb+srv://Admin:1234@cluster0.fv0r6up.mongodb.net/test";
     const query= req.query;
+    const editEmail = email?.replaceAll('"','' ) 
+    console.log(editEmail)
+    console.log(email)
   //  console.log(req.body.email)
    console.log(query.email)
     const getEmailModify = query.Email?.replaceAll('"', "");
@@ -34,7 +38,7 @@ export default async function handler(req, res) {
               break;
            
               case "POST":
-                var editEmail = Email.replaceAll('"','' ) 
+                
                 var CheckM = await dbo.collection("User").findOne( { email : editEmail} ) 
           
                 // console.log(Email)
