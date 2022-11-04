@@ -12,7 +12,7 @@ import { S3Client, S3 } from "@aws-sdk/client-s3";
 import avatar from "../../img/avatar3.png";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { FreeMode, Mousewheel, Pagination } from "swiper"
 export default function Profile() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -69,9 +69,7 @@ export default function Profile() {
         file.forEach(async (element) => {
           const imgName = Date.now() + "-" + element.name?.replaceAll(" ", "-");
           const imgURL =
-            "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" +
-            "ProfileUser/" +
-            imgName;
+            "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" + "ProfileUser/" + imgName;
           listImgURL.push(imgURL);
           const parallelUploads3 = new Upload({
             client:
@@ -100,14 +98,10 @@ export default function Profile() {
         const NewTel = document.querySelector("#newTel").value;
         const NewGender = document.querySelector("#newGender").value;
         const axiosURL = "http://localhost:3000/api/getUser";
-        const imgURL =
-          "https://jectjobe.s3.ap-southeast-1.amazonaws.com/" +
-          "ProfileUser/" +
-          imgName;
         await axios
           .post(axiosURL, {
             email: emailLocal,
-            img: imgURL,
+            img: listImgURL,
             name: NewName,
             date: NewDate,
             tel: NewTel,
@@ -214,9 +208,20 @@ export default function Profile() {
             {listProfile[0] != undefined &&
               listProfile.map((element) => {
                 console.log(element.img);
-                
+                if(element.img === []){
+                  <div className={Styles1.image}>
+                    <Image
+                      src={avatar}
+                      alt="Profile"
+                      objectFit="cover"
+                      width="200px"
+                      height="200px"
+                    />
+                  </div>
+                }else
                 return (
                   <div className={Styles1.image}>
+                    
                     <Image
                       src={element.img}
                       alt="Profile"
@@ -267,15 +272,15 @@ export default function Profile() {
                 </button>
               </div>
               <ModalBody>
-              <div className={styles1.fileDropArea}>
-            <div className={styles1.imagesPreview} id='containerPreviewImg'>
+              <div className={Styles1.fileDropArea}>
+            <div className={Styles1.imagesPreview} id='containerPreviewImg'>
             { previewImg && <img src={URL.createObjectURL(previewImg)} id='pre-img'/> }
             </div>
-            <input className={styles1.inputField} type="file" name='file' accept=".jpg,.png,.pdf"  multiple  onChange={saveFile} />
-            <div className={styles1.fakeBtn}>Choose files</div>
-            <div className={styles1.msg}>or drag and drop files here</div>
-            <p className={styles1.alert}>*จำกัดอัปโหลดไม่เกิน 3 รูปเท่านั้น</p>
-            <div className={styles1.listImages}>
+            <input className={Styles1.inputField} type="file" name='file' accept=".jpg,.png,.pdf"  multiple  onChange={saveFile} />
+            <div className={Styles1.fakeBtn}>Choose files</div>
+            <div className={Styles1.msg}>or drag and drop files here</div>
+            <p className={Styles1.alert}>*จำกัดอัปโหลดไม่เกิน 3 รูปเท่านั้น</p>
+            <div className={Styles1.listImages}>
               <Swiper
                   slidesPerView={3}
                   spaceBetween={0}
@@ -293,7 +298,7 @@ export default function Profile() {
                     
                     return (
                       <SwiperSlide key={`list-img-${index}`}>
-                        <div className={styles1.image}>
+                        <div className={Styles1.image}>
                           <img src={URL.createObjectURL(element)} onClick={ e => setPreviewImg(element) }/>
                         </div>
                       </SwiperSlide>

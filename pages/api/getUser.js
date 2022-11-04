@@ -28,7 +28,7 @@ export default async function handler(req, res) {
                       console.log(query.Email);
                       console.log(getEmailModify);
                     res.send(result);
-                    // console.log(result);
+                    console.log(result);
                     
                     console.log("Get Data Success");
                   });
