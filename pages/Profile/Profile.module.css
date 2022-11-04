@@ -207,6 +207,10 @@
     margin-top: 10px;
 }
 
+  .listImages .image{
+    display: none;  
+  }
+  
 .In__popup{
     
     margin-top:3rem;

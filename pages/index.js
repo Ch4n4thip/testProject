@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Foot from "./Footer/Footer";
 import { useDispatch } from "react-redux";
 import { increment } from "../slices/counterSlice";
-
+import ProductPage from '../Components/ProductList/index';
 
 
 export default function index() {
@@ -24,19 +24,7 @@ export default function index() {
       <Navbar/>
       <SideBar/>
 
-        <div className={styles1.card}>
-          <div className={styles1.card_img}></div>
-            <div className={styles1.card_info}>
-              <p className={styles1.text_title}>Product title </p>
-              <p className={styles1.text_body}>Product description and details</p>
-            </div>
-            <div className={styles1.card_footer}>
-            <span className={styles1.text_title}>$499.49</span>
-            <div className={styles1.card_button}>
-            <Link href="#"><BsCart2/></Link>
-            </div>
-          </div>
-        </div>
+       <ProductPage/>
        <Foot/>
     </div>
  

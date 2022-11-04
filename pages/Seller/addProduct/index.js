@@ -20,7 +20,21 @@ export default function addProduct() {
   const [previewImg, setPreviewImg] = useState()
   const [inputData, setInputData] = useState()
   const [category, setCategory] = useState('')
+  const [ email , setEmail ] = useState();
+  const [ status , setStatus ] = useState("notOk");
   const router = useRouter();
+
+  useEffect(() => {
+    if( localStorage.getItem("Email")){ setStatus("Ok")}
+  },[] ); 
+  useEffect(() => {
+    if( localStorage.getItem("Email")){ 
+      setEmail(localStorage.getItem("Email"))
+    }
+  },[] );
+  function goToIndex(){
+    router.push('/')
+  }
   const saveFile = (e) => {
     
     
@@ -75,7 +89,7 @@ export default function addProduct() {
       console.log(category)
       console.log(detail)
         await axios.post( axiosURL , {
-            
+          Email:email,
           productName: inputData.productName,
           price: inputData.price,
           amount: inputData.amount,
@@ -147,6 +161,8 @@ export default function addProduct() {
     ];
     
     const myDefault = 'all';
+  
+    if(status === "Ok"){
     return (
         <>
         <Head>
@@ -243,4 +259,12 @@ export default function addProduct() {
 
         </>
 )
+}else {
+  return (
+    <div className={styles1.ErrorPage}>
+       <h1>กรุณาเข้าสู่ระบบ</h1>
+       <button type='submit' className='btn btn-primary' onMouseDown={()=> { goToIndex()} }>OK</button> 
+    </div>
+  )
+}
 }

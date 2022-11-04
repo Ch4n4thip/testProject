@@ -229,6 +229,11 @@
   width: 50%;
   
 }
+.ErrorPage{
+  text-align: center;
+  display: block;
+  margin: 20%;
+}
 @media screen and (min-width: 1700px) {
   .edit__container {
     display: block;

@@ -5,8 +5,8 @@ export default async function handler(req, res) {
   const query= req.query;
   const EmailModify = Email?.replaceAll('"', "");
   const getEmailModify = query.Email?.replaceAll('"', "");
-  console.log(EmailModify);
-  console.log(query.Email);
+  // console.log(EmailModify);
+  // console.log(query.Email);
   MongoClient.connect(url, async function (err, db) {
     console.log(EmailModify=== Email);
         
@@ -23,16 +23,17 @@ export default async function handler(req, res) {
             .toArray((err, result) => {
               if (err)
                 res.status(400).send({ message: "Cannot connect to database" });
-                console.log(query.Email);
-                console.log(getEmailModify);
+                // console.log(query.Email);
+                // console.log(getEmailModify);
               res.send(result);
-              console.log(result);
+              // console.log(result);
               
               console.log("Get Data Success");
             });
           } catch (err) {
             res.status(400).send({ message: "Error to get data", err });
           }
+          
         break;
       case "POST":
         console.log(EmailModify);

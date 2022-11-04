@@ -17,20 +17,7 @@
                   await dbo
                   .collection("Product")
                     .find({})
-                    // .project({
-                    //   _id: 0,
-                    //   Email: 1,
-                    //   fullName: 1,
-                    //   shopName: 1,
-                    //   cardPCC: 0,
-                    //   bankName: 0,
-                    //   bookBank: 0,
-                    //   phone: 1,
-                    //   address: 1,
-                    //   imgCard: 0,
-                    //   addDate: 1,
-                    //   lastUpdate: 1,
-                    // })
+
                     .toArray((err, result) => {
                       if (err)
                         res.status(400).send({ message: "Cannot connect to database" });
